@@ -426,6 +426,137 @@ namespace Server.Misc
             }
         }
 
+        private static void FillBankUOSmart(Mobile m)
+        {
+            BankBox bank = m.BankBox;
+
+            m.StatCap = 250;
+
+            //Container cont;
+
+            //// Begin bag of potion kegs
+            //cont = new Backpack();
+            //cont.Name = "Potion Bag";
+
+            //PlaceItemIn(cont, 141, 149, MakePotionKeg(PotionEffect.Explosion, 0x74));
+            //PlaceItemIn(cont, 93, 82, new Bottle(10));
+
+            //PlaceItemIn(bank, 53, 169, cont);
+            //// End bag of potion kegs
+
+            //// Begin bag of tools
+            //cont = new Bag();
+            //cont.Name = "Tool Bag";
+
+            //PlaceItemIn(cont, 30, 35, new TinkerTools(50));
+            //PlaceItemIn(cont, 60, 35, new HousePlacementTool());
+            //PlaceItemIn(cont, 90, 35, new DovetailSaw(50));
+            //PlaceItemIn(cont, 30, 68, new Scissors());
+            //PlaceItemIn(cont, 45, 68, new MortarPestle(50));
+            //PlaceItemIn(cont, 75, 68, new ScribesPen(50));
+            //PlaceItemIn(cont, 90, 68, new SmithHammer(50));
+            //PlaceItemIn(cont, 30, 118, new TwoHandedAxe());
+            //PlaceItemIn(cont, 60, 118, new FletcherTools(50));
+            //PlaceItemIn(cont, 90, 118, new SewingKit(50));
+
+            //PlaceItemIn(bank, 118, 169, cont);
+            //// End bag of tools
+
+            //// Begin bag of treasure maps
+            //cont = new Bag();
+            //cont.Name = "Bag Of Treasure Maps";
+
+            //PlaceItemIn(cont, 30, 35, new TreasureMap(1, Map.Trammel));
+            //PlaceItemIn(cont, 45, 35, new TreasureMap(2, Map.Trammel));
+            //PlaceItemIn(cont, 60, 35, new TreasureMap(3, Map.Trammel));
+            //PlaceItemIn(cont, 75, 35, new TreasureMap(4, Map.Trammel));
+            //PlaceItemIn(cont, 90, 35, new TreasureMap(5, Map.Trammel));
+            //PlaceItemIn(cont, 90, 35, new TreasureMap(6, Map.Trammel));
+
+            //PlaceItemIn(cont, 30, 50, new TreasureMap(1, Map.Trammel));
+            //PlaceItemIn(cont, 45, 50, new TreasureMap(2, Map.Trammel));
+            //PlaceItemIn(cont, 60, 50, new TreasureMap(3, Map.Trammel));
+            //PlaceItemIn(cont, 75, 50, new TreasureMap(4, Map.Trammel));
+            //PlaceItemIn(cont, 90, 50, new TreasureMap(5, Map.Trammel));
+            //PlaceItemIn(cont, 90, 50, new TreasureMap(6, Map.Trammel));
+
+            //PlaceItemIn(cont, 55, 100, new Lockpick(30));
+            //PlaceItemIn(cont, 60, 100, new Pickaxe());
+
+            //PlaceItemIn(bank, 98, 124, cont);
+            //// End bag of treasure maps
+
+            //// Begin bag of spell casting stuff
+            //cont = new Backpack();
+            //cont.Hue = 0x480;
+            //cont.Name = "Spell Casting Stuff";
+
+            //PlaceItemIn(cont, 45, 105, new Spellbook());
+            //PlaceItemIn(cont, 65, 105, new NecromancerSpellbook());
+            //PlaceItemIn(cont, 85, 105, new BookOfChivalry((UInt64)0x3FF));
+            //PlaceItemIn(cont, 105, 105, new BookOfBushido());	//Default ctor = full
+            //PlaceItemIn(cont, 125, 105, new BookOfNinjitsu()); //Default ctor = full
+
+            //Runebook runebook = new Runebook(5);
+            //runebook.CurCharges = runebook.MaxCharges;
+            //PlaceItemIn(cont, 145, 105, runebook);
+
+            //Item toHue = new BagOfAllReagents(50);
+            //toHue.Hue = 0x2D;
+            //PlaceItemIn(cont, 45, 150, toHue);
+
+            //toHue = new BagOfNecroReagents(50);
+            //toHue.Hue = 0x488;
+            //PlaceItemIn(cont, 65, 150, toHue);
+
+            //for (int i = 0; i < 3; ++i)
+            //    PlaceItemIn(cont, 45 + (i * 10), 75, new RecallRune());
+            //PlaceItemIn(cont, 141, 74, new FireHorn());
+
+            //PlaceItemIn(bank, 78, 169, cont);
+            //// End bag of spell casting stuff
+
+            //if (Core.SE)	//This bag came only after SE.
+            //{
+            //    cont = new Bag();
+            //    cont.Name = "Bag of Weapons";
+
+            //    PlaceItemIn(cont, 31, 84, new Bow());
+            //    PlaceItemIn(cont, 31, 69, new Arrow(500));
+            //    PlaceItemIn(cont, 53, 71, new Crossbow());
+            //    PlaceItemIn(cont, 53, 56, new Bolt(500));
+            //    PlaceItemIn(cont, 53, 71, new Spear());
+            //    PlaceItemIn(cont, 56, 39, new DoubleAxe());
+            //    PlaceItemIn(cont, 82, 72, new WarHammer());
+
+            //    for (int i = 0; i < cont.Items.Count; i++)
+            //    {
+            //        BaseRanged bow = cont.Items[i] as BaseRanged;
+
+            //        if (bow != null)
+            //        {
+            //            bow.Attributes.WeaponSpeed = 35;
+            //            bow.Attributes.RegenHits = 20;
+            //            bow.TimesImbued = 50;
+            //            bow.DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //            //Brittle
+            //        }
+
+            //        BaseMeleeWeapon melee = cont.Items[i] as BaseMeleeWeapon;
+
+            //        if (melee != null)
+            //        {
+            //            melee.Attributes.WeaponSpeed = 35;
+            //            melee.Attributes.RegenHits = 20;
+            //            melee.TimesImbued = 50;
+            //            melee.DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //        }
+            //    }
+
+            //    PlaceItemIn(bank, 108, 135, cont);
+            //}
+        }
+
         private static void FillBankbox(Mobile m)
         {
             if (Core.AOS)
@@ -558,7 +689,7 @@ namespace Server.Misc
             }
             else if (m.Race == Race.Human)
             {
-                switch ( Utility.Random(3) )
+                switch (Utility.Random(3))
                 {
                     case 0:
                         EquipItem(new Shirt(hue), true);
@@ -589,7 +720,7 @@ namespace Server.Misc
             {
                 if (m.Female)
                 {
-                    switch ( Utility.Random(2) )
+                    switch (Utility.Random(2))
                     {
                         case 0:
                             EquipItem(new Skirt(hue), true);
@@ -601,7 +732,7 @@ namespace Server.Misc
                 }
                 else
                 {
-                    switch ( Utility.Random(2) )
+                    switch (Utility.Random(2))
                     {
                         case 0:
                             EquipItem(new LongPants(hue), true);
@@ -726,6 +857,7 @@ namespace Server.Misc
                 NewPlayerTicket ticket = new NewPlayerTicket();
                 ticket.Owner = newChar;
                 newChar.BankBox.DropItem(ticket);
+                FillBankUOSmart(newChar);
             }
 
             CityInfo city = GetStartLocation(args, young);
@@ -760,7 +892,7 @@ namespace Server.Misc
             ClientFlags flags = args.State == null ? ClientFlags.None : args.State.Flags;
             Mobile m = args.Mobile;
 
-            switch ( args.Profession )
+            switch (args.Profession)
             {
                 case 4: //Necro
                     {
@@ -770,7 +902,7 @@ namespace Server.Misc
                         }
                         else
                         {
-                            useHaven = true; 
+                            useHaven = true;
 
                             new BadStartMessage(m, 1062205);
                             /*
@@ -814,7 +946,7 @@ namespace Server.Misc
                     {
                         if ((flags & ClientFlags.Tokuno) != 0)
                         {
-                            return new CityInfo("Ninja DE", "Enimo's Residence", 414,	823, -1, Map.Malas);
+                            return new CityInfo("Ninja DE", "Enimo's Residence", 414, 823, -1, Map.Malas);
                         }
                         else
                         {
@@ -936,7 +1068,7 @@ namespace Server.Misc
 
         private static void SetSkills(Mobile m, SkillNameValue[] skills, int prof)
         {
-            switch ( prof )
+            switch (prof)
             {
                 case 1: // Warrior
                     {
@@ -1035,7 +1167,7 @@ namespace Server.Misc
             bool human = (m.Race == Race.Human);
             bool gargoyle = (m.Race == Race.Gargoyle);
 
-            switch ( prof )
+            switch (prof)
             {
                 case 1: // Warrior
                     {
@@ -1147,7 +1279,7 @@ namespace Server.Misc
                         addSkillItems = false;
                         break;
                     }
-					
+
                 case 6: // Samurai
                     {
                         if (elf || human)
@@ -1219,22 +1351,22 @@ namespace Server.Misc
                         break;
                     }
             }
-            
-			for (int i = 0; i < skills.Length; ++i)
-			{
-				SkillNameValue snv = skills[i];
 
-				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == 7) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Spellweaving)
-				{
-					Skill skill = m.Skills[snv.Name];
+            for (int i = 0; i < skills.Length; ++i)
+            {
+                SkillNameValue snv = skills[i];
 
-					if (skill != null)
-					{
-						skill.BaseFixedPoint = snv.Value * 10;
-						
-						if ( addSkillItems )
-							AddSkillItems(snv.Name, m);
-					}
+                if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == 7) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Spellweaving)
+                {
+                    Skill skill = m.Skills[snv.Name];
+
+                    if (skill != null)
+                    {
+                        skill.BaseFixedPoint = snv.Value * 10;
+
+                        if (addSkillItems)
+                            AddSkillItems(snv.Name, m);
+                    }
                 }
             }
         }
@@ -1275,7 +1407,7 @@ namespace Server.Misc
 
         private static void PackInstrument()
         {
-            switch ( Utility.Random(6) )
+            switch (Utility.Random(6))
             {
                 case 0:
                     PackItem(new Drums());
@@ -1300,7 +1432,7 @@ namespace Server.Misc
 
         private static void PackScroll(int circle)
         {
-            switch ( Utility.Random(8) * (circle + 1) )
+            switch (Utility.Random(8) * (circle + 1))
             {
                 case 0:
                     PackItem(new ClumsyScroll());
@@ -1384,13 +1516,13 @@ namespace Server.Misc
             return item;
         }
 
-        private static void	AddSkillItems(SkillName skill, Mobile m)
+        private static void AddSkillItems(SkillName skill, Mobile m)
         {
             bool elf = (m.Race == Race.Elf);
             bool human = (m.Race == Race.Human);
             bool gargoyle = (m.Race == Race.Gargoyle);
 
-            switch ( skill )
+            switch (skill)
             {
                 case SkillName.Alchemy:
                     {
@@ -1459,14 +1591,14 @@ namespace Server.Misc
                             EquipItem(new ElvenCompositeLongbow());
                         else if (human)
                             EquipItem(new Bow());
-					
+
                         break;
                     }
                 case SkillName.ArmsLore:
                     {
                         if (elf)
                         {
-                            switch ( Utility.Random(3) )
+                            switch (Utility.Random(3))
                             {
                                 case 0:
                                     EquipItem(new Leafblade());
@@ -1481,7 +1613,7 @@ namespace Server.Misc
                         }
                         else if (human)
                         {
-                            switch ( Utility.Random(3) )
+                            switch (Utility.Random(3))
                             {
                                 case 0:
                                     EquipItem(new Kryss());
@@ -1496,7 +1628,7 @@ namespace Server.Misc
                         }
                         else if (gargoyle)
                         {
-                            switch( Utility.Random(3) )
+                            switch (Utility.Random(3))
                             {
                                 case 0:
                                     EquipItem(new BloodBlade());
@@ -1529,7 +1661,7 @@ namespace Server.Misc
                         PackItem(new Pickaxe());
                         PackItem(new Pickaxe());
                         PackItem(new IronIngot(50));
-					
+
                         if (human || elf)
                         {
                             EquipItem(new HalfApron(Utility.RandomYellowHue()));

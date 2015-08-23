@@ -16,7 +16,7 @@ namespace Server.Misc
     public class ProfanityProtection
     {
         private static readonly bool Enabled = false;
-        private static readonly ProfanityAction Action = ProfanityAction.Disallow;// change here what to do when profanity is detected
+        private static readonly ProfanityAction Action = ProfanityAction.None;// change here what to do when profanity is detected
         private static readonly char[] m_Exceptions = new char[]
         {
             ' ', '-', '.', '\'', '"', ',', '_', '+', '=', '~', '`', '!', '^', '*', '\\', '/', ';', ':', '<', '>', '[', ']', '{', '}', '?', '|', '(', ')', '%', '$', '&', '#', '@'
