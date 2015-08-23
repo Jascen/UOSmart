@@ -4679,6 +4679,12 @@
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\SimpleArtifact.cs" />
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\SpawnerExporter.cs" />
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\StaffCloak.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\Imbuing.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\ImbuingB.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\ImbuingC.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - crafted.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - GargoyleMini.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - royalcity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".\Quests\SA Sacred Quest\Sacred Quest Questions-Answers.txt" />
