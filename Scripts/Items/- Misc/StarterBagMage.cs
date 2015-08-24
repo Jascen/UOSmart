@@ -49,6 +49,7 @@ namespace Server.Items
                     armor.Hue = 1154;
                     armor.Insured = false;
                     armor.TimesImbued = 50;
+                    armor.LootType = LootType.Blessed;
                 }
                 else if (jewel != null)
                 {
@@ -58,6 +59,7 @@ namespace Server.Items
                     jewel.Hue = 1152;
                     jewel.Insured = false;
                     jewel.TimesImbued = 50;
+                    jewel.LootType = LootType.Blessed;
                 }
             }
 
