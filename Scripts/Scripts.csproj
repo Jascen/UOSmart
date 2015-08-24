@@ -1384,6 +1384,8 @@
     <Compile Include=".\Items\Shields\- Misc\MysticsGuard.cs" />
     <Compile Include=".\Items\Shields\- Misc\PillarOfStrength.cs" />
     <Compile Include=".\Items\Shields\- Misc\SentinelsGuard.cs" />
+    <Compile Include="Items\- Misc\StarterBagMage.cs" />
+    <Compile Include="Items\- Misc\StarterBagWarrior.cs" />
     <Compile Include="Items\Addons\Magincia Bazaar\Bazaar AddOns\Alchemist2BazaarAddon.cs" />
     <Compile Include="Items\Addons\Magincia Bazaar\Bazaar AddOns\ArmorBazaarAddon.cs" />
     <Compile Include="Items\Addons\Magincia Bazaar\Bazaar AddOns\ArtistBazaarAddon.cs" />
@@ -4679,6 +4681,12 @@
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\SimpleArtifact.cs" />
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\SpawnerExporter.cs" />
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\StaffCloak.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\Imbuing.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\ImbuingB.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\ImbuingC.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - crafted.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - GargoyleMini.cs" />
+    <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - royalcity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".\Quests\SA Sacred Quest\Sacred Quest Questions-Answers.txt" />
