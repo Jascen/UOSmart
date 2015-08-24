@@ -454,6 +454,9 @@ namespace Server.Misc
 
             PlaceItemIn(bank, 98, 124, cont);
             // End bag of treasure maps      
+            PlaceItemIn(m.Backpack, 98, 124, new StarterBagWarrior());
+            PlaceItemIn(m.Backpack, 98, 125, new StarterBagMage());
+            
         }
 
         private static void FillBankbox(Mobile m)
@@ -756,8 +759,9 @@ namespace Server.Misc
                 NewPlayerTicket ticket = new NewPlayerTicket();
                 ticket.Owner = newChar;
                 newChar.BankBox.DropItem(ticket);
-                ApplyUOSmartSettings(newChar);
             }
+
+            ApplyUOSmartSettings(newChar);
 
             CityInfo city = GetStartLocation(args, young);
 

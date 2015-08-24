@@ -63,6 +63,7 @@ namespace Server.Items
                     armor.Hue = 1157;
                     armor.Insured = false;
                     armor.TimesImbued = 50;
+                    armor.StrRequirement = 0;
                 }
             }
 
