@@ -223,7 +223,10 @@ namespace Server.Misc
                 int toGain = 1;
 
                 if (skill.Base <= 10.0)
-                    toGain = Utility.Random(4) + 1;
+                {
+                    //toGain = Utility.Random(4) + 1;
+                    toGain = 400 - (int)(10 * skill.Base);
+                }
 
                 Skills skills = from.Skills;
 
