@@ -37,7 +37,7 @@ namespace Server.Misc
         * firewalls) or specific IP adddresses you can do so by modifying the file SocketOptions.cs found in this directory.
         */
         public static readonly string Address = null;
-        public static readonly string ServerName = "My Shard";
+        public static readonly string ServerName = "UO Smart";
         public static readonly bool AutoDetect = true;
         private static IPAddress m_PublicAddress;
         public static void Initialize()
@@ -73,7 +73,7 @@ namespace Server.Misc
                     if (!IsPrivateNetwork(ipep.Address) && m_PublicAddress != null)
                         localAddress = m_PublicAddress;
                 }
-
+                Console.WriteLine("Players connecting to IP: {0}", localAddress);
                 e.AddServer(ServerName, new IPEndPoint(localAddress, localPort));
             }
             catch
@@ -86,13 +86,17 @@ namespace Server.Misc
         {
             if (!HasPublicIPAddress())
             {
-                Console.Write("ServerList: Auto-detecting public IP address...");
+                Console.WriteLine("ServerList: Auto-detecting public IP address...");
                 m_PublicAddress = FindPublicAddress();
 
                 if (m_PublicAddress != null)
-                    Console.WriteLine("done ({0})", m_PublicAddress.ToString());
+                    Console.WriteLine("Players connecting to: ({0})", m_PublicAddress.ToString());
                 else
-                    Console.WriteLine("failed");
+                {
+                    m_PublicAddress = IPAddress.Parse("191.237.85.174");
+                    Console.WriteLine("Failed to AutoDetectIP... Assuming: {0}", m_PublicAddress.ToString());
+                }
+                    
             }
         }
 
@@ -152,6 +156,8 @@ namespace Server.Misc
                 return false;
 
             if (Utility.IPMatch("192.168.*", ip))
+                return true;
+            if (Utility.IPMatch("100.*", ip))
                 return true;
             else if (Utility.IPMatch("10.*", ip))
                 return true;

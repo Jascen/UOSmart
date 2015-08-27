@@ -275,11 +275,11 @@ namespace Server.Misc
             {
                 SkillInfo info = skill.Info;
 
-                if (from.StrLock == StatLockType.Up && (info.StrGain / 33.3) > Utility.RandomDouble())
+                if (from.StrLock == StatLockType.Up && (info.StrGain / 15) > Utility.RandomDouble())
                     GainStat(from, Stat.Str);
-                else if (from.DexLock == StatLockType.Up && (info.DexGain / 33.3) > Utility.RandomDouble())
+                else if (from.DexLock == StatLockType.Up && (info.DexGain / 15) > Utility.RandomDouble())
                     GainStat(from, Stat.Dex);
-                else if (from.IntLock == StatLockType.Up && (info.IntGain / 33.3) > Utility.RandomDouble())
+                else if (from.IntLock == StatLockType.Up && (info.IntGain / 15) > Utility.RandomDouble())
                     GainStat(from, Stat.Int);
             }
         }
@@ -374,7 +374,7 @@ namespace Server.Misc
             }
         }
 
-        private static readonly TimeSpan m_StatGainDelay = TimeSpan.FromMinutes(15.0);
+        private static readonly TimeSpan m_StatGainDelay = TimeSpan.FromMinutes(5.0);
         private static readonly TimeSpan m_PetStatGainDelay = TimeSpan.FromMinutes(5.0);
 
         public static void GainStat(Mobile from, Stat stat)
