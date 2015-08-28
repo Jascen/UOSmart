@@ -2564,7 +2564,10 @@ namespace Server.Mobiles
 
 			if (Alive && !wasAlive)
 			{
-				Item deathRobe = new DeathRobe();
+                if (this.AccessLevel < AccessLevel.GameMaster)
+                    new RKProtect(this, 30.0).Start();
+
+                Item deathRobe = new DeathRobe();
 
 				if (!EquipItem(deathRobe))
 				{
