@@ -18,7 +18,7 @@ namespace Server
 			else
 			{
 				BaseCreature t=(BaseCreature)targ;
-
+                
 				#region Shrink Restrictions
 				if ( !restricted )
 				{
@@ -28,6 +28,10 @@ namespace Server
 				{ 
 					errorString = "You cannot shrink summoned creatures.";
 				}
+                else if ( t.Poisoned )
+                {
+                    errorString = "You cannot shrink your pet while it is poisoned.";
+                }
 				else if ( t.Combatant != null && t.InRange( t.Combatant, 12 ) && t.Map == t.Combatant.Map )
 				{
 					errorString = "You cannot shrink your pet while it is in combat.";
