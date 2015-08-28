@@ -15,24 +15,33 @@ namespace Server.Spells.Fifth
         // NOTE: Creature list based on 1hr of summon/release on OSI.
         private static readonly Type[] m_Types = new Type[]
         {
-            typeof(PolarBear),
-            typeof(GrizzlyBear),
-            typeof(BlackBear),
             typeof(Horse),
-            typeof(Walrus),
-            typeof(Chicken),
-            typeof(Scorpion),
-            typeof(GiantSerpent),
-            typeof(Llama),
-            typeof(Alligator),
-            typeof(GreyWolf),
-            typeof(Slime),
-            typeof(Eagle),
-            typeof(Gorilla),
-            typeof(SnowLeopard),
-            typeof(Pig),
-            typeof(Hind),
-            typeof(Rabbit)
+            typeof(DesertOstard),
+            typeof(ForestOstard),
+            typeof(FrenziedOstard),
+            typeof(RidableLlama),
+            typeof(Ridgeback),
+            typeof(SwampDragon),
+            typeof(HellSteed),
+            typeof(ChargerOfTheFallen)
+            //typeof(PolarBear),
+            //typeof(GrizzlyBear),
+            //typeof(BlackBear),
+            //typeof(Horse),
+            //typeof(Walrus),
+            //typeof(Chicken),
+            //typeof(Scorpion),
+            //typeof(GiantSerpent),
+            //typeof(Llama),
+            //typeof(Alligator),
+            //typeof(GreyWolf),
+            //typeof(Slime),
+            //typeof(Eagle),
+            //typeof(Gorilla),
+            //typeof(SnowLeopard),
+            //typeof(Pig),
+            //typeof(Hind),
+            //typeof(Rabbit)
         };
         public SummonCreatureSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -51,7 +60,7 @@ namespace Server.Spells.Fifth
             if (!base.CheckCast())
                 return false;
 
-            if ((this.Caster.Followers + 2) > this.Caster.FollowersMax)
+            if ((this.Caster.Followers + 1) > this.Caster.FollowersMax)
             {
                 this.Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;
