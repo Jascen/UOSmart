@@ -454,8 +454,17 @@ namespace Server.Misc
 
             PlaceItemIn(bank, 98, 124, cont);
             // End bag of treasure maps      
-            PlaceItemIn(m.Backpack, 98, 124, new StarterBagWarrior());
-            PlaceItemIn(m.Backpack, 98, 125, new StarterBagMage());
+            if (m.Race != Race.Gargoyle)
+            {
+                PlaceItemIn(bank, 98, 124, new StarterBagWarrior());
+                PlaceItemIn(bank, 70, 124, new StarterBagMage());
+            }
+            else
+            {
+                PlaceItemIn(bank, 98, 124, new StarterBagWarriorGargoyle());
+                PlaceItemIn(bank, 70, 124, new StarterBagMageGargoyle());
+            }
+
             
         }
 

@@ -50,6 +50,7 @@ namespace Server.Items
                     armor.Insured = false;
                     armor.TimesImbued = 50;
                     armor.LootType = LootType.Blessed;
+                    armor.Weight = 0;
                 }
                 else if (jewel != null)
                 {
