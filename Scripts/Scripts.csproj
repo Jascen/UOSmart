@@ -4691,6 +4691,8 @@
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - crafted.cs" />
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - GargoyleMini.cs" />
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - royalcity.cs" />
+    <Compile Include="SpecialSystems\ResKill Protection\RKPOff.cs" />
+    <Compile Include="SpecialSystems\ResKill Protection\RKProtect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".\Quests\SA Sacred Quest\Sacred Quest Questions-Answers.txt" />
