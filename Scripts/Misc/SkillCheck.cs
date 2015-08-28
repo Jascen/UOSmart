@@ -129,10 +129,10 @@ namespace Server.Misc
             bool success = (chance >= Utility.RandomDouble());
             double gc = (double)(from.Skills.Cap - from.Skills.Total) / from.Skills.Cap;
             gc += (skill.Cap - skill.Base) / skill.Cap;
-            gc /= 1.2;// 2;
+            gc /= 1.4;// 2;
 
             gc += (1.0 - chance) * (success ? 0.5 : (Core.AOS ? 0.0 : 0.2));
-            gc /= 1.2;// 2;
+            gc /= 1.4;// 2;
 
             gc *= skill.Info.GainFactor;
 
@@ -222,10 +222,10 @@ namespace Server.Misc
             {
                 int toGain = 1;
 
-                if (skill.Base <= 10.0)
+                if (skill.Base <= 50.0)
                 {
                     //toGain = Utility.Random(4) + 1;
-                    toGain = 400 - (int)(10 * skill.Base);
+                    toGain = Utility.Random(4) + 1;
                 }
 
                 Skills skills = from.Skills;
