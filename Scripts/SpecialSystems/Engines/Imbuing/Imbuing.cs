@@ -506,7 +506,7 @@ namespace Server.SkillHandlers
                                     else
                                     {
                                         m_mob.SendLocalizedMessage(1080434); // Your Imbuing skill is not high enough to magically unravel this item.
-                                        return;
+                                        continue;
                                     }
                                 }
                                 // == Relic Fragment ==
@@ -517,7 +517,7 @@ namespace Server.SkillHandlers
                                     else
                                     {
                                         m_mob.SendLocalizedMessage(1080434); // Your Imbuing skill is not high enough to magically unravel this item.
-                                        return;
+                                        continue;
                                     }
                                 }
                                 // = FAILURE
