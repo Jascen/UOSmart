@@ -283,7 +283,7 @@ namespace Server.Items
         {
             get
             {
-                return false;
+                return true;
             }
         }
 
