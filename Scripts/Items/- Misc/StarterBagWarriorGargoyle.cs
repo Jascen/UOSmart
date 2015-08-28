@@ -2,10 +2,10 @@
 
 namespace Server.Items
 {
-    class StarterBagWarrior : Bag
+    class StarterBagWarriorGargoyle : Bag
     {
         [Constructable]
-        public StarterBagWarrior()
+        public StarterBagWarriorGargoyle()
         {
             Container cont;
             this.Name = "Starter Bag - Warrior";
@@ -27,24 +27,25 @@ namespace Server.Items
                 cont.Items[i].LootType = LootType.Blessed;
             }
 
-                cont = new Bag();
+            cont = new Bag();
             cont.Name = "Gear Bag";
             // Armor
-            PlaceItemIn(cont, 30, 35, new PlateChest());
-            PlaceItemIn(cont, 60, 35, new PlateGorget());
-            PlaceItemIn(cont, 90, 35, new PlateArms());
-            PlaceItemIn(cont, 30, 68, new PlateHelm());
-            PlaceItemIn(cont, 45, 68, new PlateGloves());
-            PlaceItemIn(cont, 75, 68, new PlateLegs());
+            PlaceItemIn(cont, 30, 35, new GargishPlateChest());
+            PlaceItemIn(cont, 90, 35, new GargishPlateArms());
+            PlaceItemIn(cont, 30, 68, new GargishPlateKilt());
+            PlaceItemIn(cont, 45, 68, new GargishPlateWingArmor());
+            PlaceItemIn(cont, 45, 68, new GargishRobe());
             // Jewelry
-            PlaceItemIn(cont, 90, 68, new GoldEarrings());
-            PlaceItemIn(cont, 30, 118, new GoldBracelet());
-            PlaceItemIn(cont, 60, 118, new GoldRing());
+            PlaceItemIn(cont, 90, 68, new GargishNecklace());
+            PlaceItemIn(cont, 30, 118, new GargishEarrings());
+            PlaceItemIn(cont, 60, 118, new GargishRing());
+            PlaceItemIn(cont, 90, 100, new GargishBracelet());
             PlaceItemIn(this, 50, 0, cont);
             for (int i = 0; i < cont.Items.Count; i++)
             {
                 BaseArmor armor = cont.Items[i] as BaseArmor;
                 BaseJewel jewel = cont.Items[i] as BaseJewel;
+                BaseClothing clothes = cont.Items[i] as BaseClothing;
                 if (jewel != null)
                 {
                     jewel.Attributes.LowerRegCost = 12;
@@ -66,35 +67,38 @@ namespace Server.Items
                     armor.StrRequirement = 0;
                     armor.Weight = 0;
                 }
+                else if (clothes != null)
+                {
+                    clothes.Attributes.LowerRegCost = 12;
+                    clothes.LootType = LootType.Blessed;
+                    clothes.TimesImbued = 50;
+                }
             }
 
             cont = new Bag();
             cont.Name = "Weapon Bag";
             // Weapons
-            PlaceItemIn(cont, 30, 35, new CompositeBow());
-            PlaceItemIn(cont, 60, 35, new Arrow(500));
-            PlaceItemIn(cont, 90, 35, new RepeatingCrossbow());
-            PlaceItemIn(cont, 30, 68, new Bolt(500));
-            PlaceItemIn(cont, 45, 68, new ShortSpear());
-            PlaceItemIn(cont, 75, 68, new Hatchet());
-            PlaceItemIn(cont, 90, 68, new QuarterStaff());
+            PlaceItemIn(cont, 30, 35, new Cyclone());
+            PlaceItemIn(cont, 45, 68, new GargishKryss());
+            PlaceItemIn(cont, 75, 68, new GargishBattleAxe());
+            PlaceItemIn(cont, 90, 68, new GargishGnarledStaff());
             PlaceItemIn(cont, 30, 118, new BookOfChivalry((UInt64)0x3FF));
             PlaceItemIn(cont, 60, 118, new BookOfNinjitsu());
             PlaceItemIn(this, 100, 0, cont);
 
             for (int i = 0; i < cont.Items.Count; i++)
             {
-                BaseRanged bow = cont.Items[i] as BaseRanged;
+                BaseThrown thrown = cont.Items[i] as BaseThrown;
                 BaseMeleeWeapon melee = cont.Items[i] as BaseMeleeWeapon;
-                if (bow != null)
+                if (thrown != null)
                 {
-                    bow.Attributes.WeaponSpeed = 35;
-                    bow.Attributes.RegenHits = 20;
-                    bow.TimesImbued = 50;
-                    bow.DurabilityLevel = WeaponDurabilityLevel.Regular;
-                    bow.Hue = 1161;
-                    bow.LootType = LootType.Blessed;
-                    bow.TimesImbued = 50;
+                    thrown.Attributes.WeaponSpeed = 35;
+                    thrown.Attributes.RegenHits = 20;
+                    thrown.TimesImbued = 50;
+                    thrown.DurabilityLevel = WeaponDurabilityLevel.Regular;
+                    thrown.Hue = 1161;
+                    thrown.LootType = LootType.Blessed;
+                    thrown.TimesImbued = 50;
                 }
                 else if (melee != null)
                 {
@@ -115,7 +119,7 @@ namespace Server.Items
             item.Location = new Point3D(x, y, 0);
         }
 
-        public StarterBagWarrior(Serial serial)
+        public StarterBagWarriorGargoyle(Serial serial)
             : base(serial)
         {
         }
