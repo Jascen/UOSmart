@@ -116,7 +116,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             this.AddLoot(LootPack.FilthyRich, 3);
-            this.AddLoot(LootPack.MedScrolls, 2);
+            this.AddLoot(LootPack.HighScrolls, 4);
         }
 
         public override void Serialize(GenericWriter writer)

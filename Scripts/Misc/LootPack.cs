@@ -139,8 +139,10 @@ namespace Server
 		{
 			new LootPackItem(typeof(SummonAirElementalScroll), 1), new LootPackItem(typeof(SpellPlagueScroll), 1),
 			new LootPackItem(typeof(HailStormScroll), 1), new LootPackItem(typeof(CleansingWindsScroll), 1),
-			new LootPackItem(typeof(BombardScroll), 1)
-		};
+			new LootPackItem(typeof(BombardScroll), 1), new LootPackItem(typeof(EarthquakeScroll), 1),
+            new LootPackItem(typeof(EnergyVortexScroll), 1), new LootPackItem(typeof(ResurrectionScroll), 1),
+            new LootPackItem(typeof(SummonFireElementalScroll), 1)
+        };
 
 		public static readonly LootPackItem[] GemItems = new[] {new LootPackItem(typeof(Amber), 1)};
 
