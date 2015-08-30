@@ -216,11 +216,11 @@ namespace Server.Items
             if (this.Deleted || !from.CanSee(this))
                 return false;
 
-            if (Core.AOS && !this.IsChildOf(from.Backpack))
-            {
-                from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
-                return false;
-            }
+            //if (Core.AOS && !this.IsChildOf(from.Backpack))
+            //{
+            //    from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
+            //    return false;
+            //}
 
             base.ScissorHelper(from, new SpinedLeather(), 1);
 
@@ -269,11 +269,11 @@ namespace Server.Items
             if (this.Deleted || !from.CanSee(this))
                 return false;
 
-            if (Core.AOS && !this.IsChildOf(from.Backpack))
-            {
-                from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
-                return false;
-            }
+            //if (Core.AOS && !this.IsChildOf(from.Backpack))
+            //{
+            //    from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
+            //    return false;
+            //}
 			
             base.ScissorHelper(from, new HornedLeather(), 1);
 
@@ -322,11 +322,11 @@ namespace Server.Items
             if (this.Deleted || !from.CanSee(this))
                 return false;
 
-            if (Core.AOS && !this.IsChildOf(from.Backpack))
-            {
-                from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
-                return false;
-            }
+            //if (Core.AOS && !this.IsChildOf(from.Backpack))
+            //{
+            //    from.SendLocalizedMessage(502437); // Items you wish to cut must be in your backpack
+            //    return false;
+            //}
 
             base.ScissorHelper(from, new BarbedLeather(), 1);
 
