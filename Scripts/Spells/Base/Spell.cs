@@ -833,6 +833,10 @@ namespace Server.Spells
 			}
 
 			int fcr = AosAttributes.GetValue(m_Caster, AosAttribute.CastRecovery);
+            if (fcr > 8)
+            {
+                fcr = 8;
+            }
 
 			fcr -= ThunderstormSpell.GetCastRecoveryMalus(m_Caster);
 
@@ -872,8 +876,8 @@ namespace Server.Spells
 			// Paladins with magery of 70.0 or above are subject to a faster casting cap of 2 
 			int fcMax = 4;
 
-			if (CastSkill == SkillName.Magery || CastSkill == SkillName.Necromancy ||
-				(CastSkill == SkillName.Chivalry && m_Caster.Skills[SkillName.Magery].Value >= 70.0))
+			//if (CastSkill == SkillName.Magery || CastSkill == SkillName.Necromancy ||
+				if (CastSkill == SkillName.Chivalry && m_Caster.Skills[SkillName.Magery].Value >= 70.0)//)
 			{
 				fcMax = 2;
 			}
