@@ -58,6 +58,10 @@ namespace Server.Mobiles
                 this.m_SBInfos.Add(new SBSEArmor());	
                 this.m_SBInfos.Add(new SBSEWeapons());
             }
+            if (this.IsTerMurVendor)
+            {
+                this.m_SBInfos.Add(new SBBlacksmithTerMur());
+            }
         }
 
         public override VendorShoeType ShoeType

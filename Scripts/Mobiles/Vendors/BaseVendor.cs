@@ -229,7 +229,9 @@ namespace Server.Mobiles
 
 		public virtual bool IsTokunoVendor { get { return (Map == Map.Tokuno); } }
 
-		protected void LoadSBInfo()
+        public virtual bool IsTerMurVendor { get { return (Map == Map.TerMur); } }
+
+        protected void LoadSBInfo()
 		{
 			m_LastRestock = DateTime.UtcNow;
 
