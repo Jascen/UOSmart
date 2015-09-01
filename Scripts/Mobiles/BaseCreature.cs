@@ -5499,9 +5499,10 @@ namespace Server.Mobiles
 							titles.Add(ds.m_Mobile);
 							fame.Add(totalFame);
 							karma.Add(totalKarma);
-						}
+                            GiveTokens.CalculateTokens(ds.m_Mobile, this);
+                        }
 
-						OnKilledBy(ds.m_Mobile);
+                        OnKilledBy(ds.m_Mobile);
 
 						XmlQuest.RegisterKill(this, ds.m_Mobile);
 
@@ -5545,7 +5546,7 @@ namespace Server.Mobiles
 					{
 						Titles.AwardFame(titles[i], fame[i], true);
 						Titles.AwardKarma(titles[i], karma[i], true);
-					}
+                    }
 				}
 
 				base.OnDeath(c);
