@@ -1354,7 +1354,7 @@
 					<rect x="3423" y="2480" width="111" height="143" />
 					<go x="3503" y="2574" z="14" />
 					<music name="InTown01" />
-					<guards disabled="true" />
+					<guards disabled="false" />
 					<region name="the New Haven Alchemist">
 						<rect x="3457" y="2564" width="9" height="9" />
 					</region>
@@ -1378,6 +1378,7 @@
 					<region name="the New Haven Inn">
 						<rect x="2493" y="2513" width="17" height="9" />
 						<rect x="3503" y="2523" width="7" height="7" />
+						<logoutDelay active="false" />
 					</region>
 					<region name="the New Haven Docks">
 						<rect x="3501" y="2587" width="26" height="30" />
