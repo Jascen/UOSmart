@@ -273,7 +273,7 @@ namespace Server.Items
 		{ 
 			RequiredSkill = 92;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
-			MaxLockLevel = this.RequiredSkill;
+            MaxLockLevel = 100;
 			TrapType = TrapType.MagicTrap;
 			TrapPower = 4 * Utility.Random( 1, 25 );
 
