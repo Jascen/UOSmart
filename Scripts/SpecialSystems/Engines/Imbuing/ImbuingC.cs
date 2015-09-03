@@ -1424,30 +1424,31 @@ namespace Server.SkillHandlers
                         if (i_Mod == 25) 
                         { 
                             it.WeaponAttributes.HitLeechHits = modvalue;
-                            it.WeaponAttributes.HitLeechStam = 0;
-                            it.WeaponAttributes.HitLeechMana = 0;
+                            //it.WeaponAttributes.HitLeechStam = 0;
+                            //it.WeaponAttributes.HitLeechMana = 0;
                         }
                         if (i_Mod == 26) 
                         { 
                             it.WeaponAttributes.HitLeechStam = modvalue;
-                            it.WeaponAttributes.HitLeechHits = 0;
-                            it.WeaponAttributes.HitLeechMana = 0;
+                            //it.WeaponAttributes.HitLeechHits = 0;
+                            //it.WeaponAttributes.HitLeechMana = 0;
                         }
                         if (i_Mod == 27) 
                         { 
                             it.WeaponAttributes.HitLeechMana = modvalue;
-                            it.WeaponAttributes.HitLeechHits = 0;
-                            it.WeaponAttributes.HitLeechStam = 0;
+                            //it.WeaponAttributes.HitLeechHits = 0;
+                            //it.WeaponAttributes.HitLeechStam = 0;
                         }
                         if (i_Mod == 28) 
                         { 
                             it.WeaponAttributes.HitLowerAttack = modvalue;
-                            it.WeaponAttributes.HitPhysicalArea = 0;                       
+                            //it.WeaponAttributes.HitPhysicalArea = 0;                       
+                            //it.WeaponAttributes.HitLowerDefend = 0;
                         }
                         if (i_Mod == 29) 
                         { 
                             it.WeaponAttributes.HitLowerDefend = modvalue;
-                            it.WeaponAttributes.HitLowerAttack = 0;                       
+                            //it.WeaponAttributes.HitLowerAttack = 0;                       
                         }
                         if (i_Mod == 30) 
                         { 
@@ -1495,7 +1496,7 @@ namespace Server.SkillHandlers
                             it.WeaponAttributes.HitHarm = 0;
                             it.WeaponAttributes.HitFireball = 0;
                             it.WeaponAttributes.HitLightning = 0;
-                            it.WeaponAttributes.HitDispel = 0;
+                            //it.WeaponAttributes.HitDispel = 0;
                         }
                         if (i_Mod == 36)
                         {
@@ -1503,7 +1504,7 @@ namespace Server.SkillHandlers
                             it.WeaponAttributes.HitHarm = modvalue;
                             it.WeaponAttributes.HitFireball = 0;
                             it.WeaponAttributes.HitLightning = 0;
-                            it.WeaponAttributes.HitDispel = 0;
+                            //it.WeaponAttributes.HitDispel = 0;
                         }
                         if (i_Mod == 37)
                         {
@@ -1511,7 +1512,7 @@ namespace Server.SkillHandlers
                             it.WeaponAttributes.HitHarm = 0;
                             it.WeaponAttributes.HitFireball = modvalue;
                             it.WeaponAttributes.HitLightning = 0;
-                            it.WeaponAttributes.HitDispel = 0;
+                            //it.WeaponAttributes.HitDispel = 0;
                         }
                         if (i_Mod == 38)
                         {
@@ -1519,14 +1520,14 @@ namespace Server.SkillHandlers
                             it.WeaponAttributes.HitHarm = 0;
                             it.WeaponAttributes.HitFireball = 0;
                             it.WeaponAttributes.HitLightning = modvalue;
-                            it.WeaponAttributes.HitDispel = 0;
+                            //it.WeaponAttributes.HitDispel = 0;
                         }
                         if (i_Mod == 39)
                         {
-                            it.WeaponAttributes.HitMagicArrow = 0;
-                            it.WeaponAttributes.HitHarm = 0;
-                            it.WeaponAttributes.HitFireball = 0;
-                            it.WeaponAttributes.HitLightning = 0;
+                            //it.WeaponAttributes.HitMagicArrow = 0;
+                            //it.WeaponAttributes.HitHarm = 0;
+                            //it.WeaponAttributes.HitFireball = 0;
+                            //it.WeaponAttributes.HitLightning = 0;
                             it.WeaponAttributes.HitDispel = modvalue;
                         }
                         if (i_Mod == 40) { it.WeaponAttributes.UseBestSkill = 1; }
