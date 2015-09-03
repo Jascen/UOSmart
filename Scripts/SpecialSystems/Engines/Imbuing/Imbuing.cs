@@ -701,7 +701,7 @@ namespace Server.SkillHandlers
                 }
                 else if (o is BaseArmor)
                 {
-                    if (Imod == 3 || Imod == 4 || Imod == 5 || Imod == 9 || Imod == 10 || Imod == 11 || Imod == 21 || Imod == 23 || (Imod >= 17 && Imod <= 19))
+                    if (Imod == 3 || Imod == 4 || Imod == 5 || Imod == 9 || Imod == 10 || Imod == 11 || Imod == 21 || Imod == 23 || (Imod >= 17 && Imod <= 19) || (Imod >= 51 && Imod <= 55))
                     {
                         ImbuingGumpC.ImbueItem(from, o, Imod, ImodInt);
                         from.SendGump(new ImbuingGump(from));
@@ -712,7 +712,7 @@ namespace Server.SkillHandlers
                 }
                 else if (o is BaseHat)
                 {
-                    if (Imod == 3 || Imod == 4 || Imod == 5 || Imod == 9 || Imod == 10 || Imod == 11 || Imod == 21 || Imod == 23 || (Imod >= 17 && Imod <= 19))
+                    if (Imod == 3 || Imod == 4 || Imod == 5 || Imod == 9 || Imod == 10 || Imod == 11 || Imod == 21 || Imod == 23 || (Imod >= 17 && Imod <= 19) || (Imod >= 51 && Imod <= 55))
                     {
                         ImbuingGumpC.ImbueItem(from, o, Imod, ImodInt);
                         from.SendGump(new ImbuingGump(from));

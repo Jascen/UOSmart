@@ -1384,6 +1384,7 @@
     <Compile Include=".\Items\Shields\- Misc\MysticsGuard.cs" />
     <Compile Include=".\Items\Shields\- Misc\PillarOfStrength.cs" />
     <Compile Include=".\Items\Shields\- Misc\SentinelsGuard.cs" />
+    <Compile Include="Commands\MyStatsGump.cs" />
     <Compile Include="Items\- Misc\HealingFairyJar.cs" />
     <Compile Include="Items\- Misc\StarterBagMage.cs" />
     <Compile Include="Items\- Misc\StarterBagMageGargoyle.cs" />
@@ -4437,6 +4438,7 @@
     <Compile Include="Items\Weapons\Artifacts\StaffOfResonance.cs" />
     <Compile Include="Items\Weapons\Artifacts\ValkyriesGlaive.cs" />
     <Compile Include="Mobiles\Personal Attendants\HealingFairy.cs" />
+    <Compile Include="Mobiles\Vendors\SBInfo\SBBlacksmithTerMur.cs" />
     <Compile Include="Quests\SA Barreraak Quest\Barreraak.cs" />
     <Compile Include="Quests\SA Barreraak Quest\BarreraakRing.cs" />
     <Compile Include="Quests\SA Barreraak Quest\RedHerring.cs" />
@@ -4691,8 +4693,17 @@
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - crafted.cs" />
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - GargoyleMini.cs" />
     <Compile Include="SpecialSystems\Engines\Imbuing\SoulForge - royalcity.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterBackpack.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterContextMenus.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterGoldLedgerDeed.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterGumps.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterTargets.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterTokenLedgerDeed.cs" />
+    <Compile Include="SpecialSystems\MasterLooter\MasterLooterUtils.cs" />
     <Compile Include="SpecialSystems\ResKill Protection\RKPOff.cs" />
     <Compile Include="SpecialSystems\ResKill Protection\RKProtect.cs" />
+    <Compile Include="SpecialSystems\Token System\daat99%27s Token System.cs" />
+    <Compile Include="SpecialSystems\Token System\Safe Trash 4 Tokens Backpack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".\Quests\SA Sacred Quest\Sacred Quest Questions-Answers.txt" />
@@ -4805,6 +4816,7 @@
     <Content Include="Services\XmlSpawner\XMLSpawner Extras\XmlSockets\XmlSockets log.txt" />
     <Content Include="Services\XmlSpawner\XMLSpawner Support\xmlspawner2.txt" />
     <Content Include="Services\XmlSpawner\XMLSpawner Support\xmlspawner2doc.txt" />
+    <Content Include="SpecialSystems\MasterLooter\MasterLooter.Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
