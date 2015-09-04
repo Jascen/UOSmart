@@ -4902,13 +4902,13 @@ namespace Server.Mobiles
             {                               
                 Item ingredient = null;
 
-                int chance = Utility.Random(200);
+                int chance = Utility.Random(100);
 
                 // = Daemon type [Essence of Achievement] or [Essence of Passion] ==================================
                 if (this is Daemon || this is Balron || this is ElderGazer || this is Succubus || this is ArcaneDaemon || this is IceFiend || this is Putrefier || this is Oni || this is FanDancer || this is Devourer)
                 {
-                    // = 1/33 chance
-                    if (chance == 1 || chance == 41 || chance == 81 || chance == 121 || chance == 161 || chance == 199)
+                    // = 10% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41 || chance == 51 || chance == 61 || chance == 71 || chance == 81 || chance == 91)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceAchievement(); }
                         else { ingredient = new EssencePassion(); }
@@ -4921,8 +4921,8 @@ namespace Server.Mobiles
                 }
                 else if (this is Imp || this is Gazer || this is Moloch || this is ChaosDaemon || this is Doppleganger || this is GoreFiend)
                 {
-                    // = 1/66 chance
-                    if (chance == 1 || chance == 81 || chance == 161)
+                    // = 5% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceAchievement(); }
                         else { ingredient = new EssencePassion(); }
@@ -4931,8 +4931,8 @@ namespace Server.Mobiles
                 // = Undead type [Essence of Direction] or [Essence of Precision] ==================================
                 else if (this is LichLord || this is RevenantLion || this is SkeletalDragon || this is AncientLich || this is RottingCorpse || this is BoneDemon)
                 {
-                    // = 1/33 chance
-                    if (chance == 1 || chance == 41 || chance == 81 || chance == 121 || chance == 161 || chance == 199)
+                    // = 10% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41 || chance == 51 || chance == 61 || chance == 71 || chance == 81 || chance == 91)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceDirection(); }
                         else { ingredient = new EssencePrecision(); }
@@ -4945,8 +4945,8 @@ namespace Server.Mobiles
                 }
                 else if (this is BoneMagi || this is Lich || this is Shade || this is Spectre || this is Wraith || this is Bogle || this is BoneKnight || this is SkeletalKnight || this is Mummy || this is WailingBanshee || this is FleshGolem)
                 {
-                    // = 1/66 chance
-                    if (chance == 1 || chance == 81 || chance == 161)
+                    // = 5% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceDirection(); }
                         else { ingredient = new EssencePrecision(); }
@@ -4955,8 +4955,8 @@ namespace Server.Mobiles
                 // = Repond type [Essence of Balance] or [Essence of Control] ==================================
                 else if (this is ArcticOgreLord || this is Cyclops || this is MeerEternal || this is MeerMage || this is MeerCaptain || this is OgreLord || this is OrcBrute || this is OgreLord || this is Titan)
                 {
-                    // = 1/33 chance
-                    if (chance == 1 || chance == 41 || chance == 81 || chance == 121 || chance == 161 || chance == 199)
+                    // = 10% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41 || chance == 51 || chance == 61 || chance == 71 || chance == 81 || chance == 91)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceBalance(); }
                         else { ingredient = new EssenceControl(); }
@@ -4969,8 +4969,8 @@ namespace Server.Mobiles
                 }
                 else if (this is Ogre || this is Ettin || this is EvilMage || this is EvilMageLord || this is FrostTroll || this is Ogre || this is Orc || this is OrcBomber || this is OrcishLord || this is OrcishMage || this is Ratman || this is RatmanArcher || this is RatmanMage || this is SavageRider || this is SavageShaman || this is Savage || this is Troll)
                 {
-                    // = 1/66 chance
-                    if (chance == 1 || chance == 81 || chance == 161)
+                    // = 5% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceBalance(); }
                         else { ingredient = new EssenceControl(); }
@@ -4979,8 +4979,8 @@ namespace Server.Mobiles
                 // = Reptile type [Essence of Precision] or [Essence of Diligence] ==================================
                 else if (this is AncientWyrm || this is GreaterDragon || this is Dragon || this is OphidianMatriarch || this is ShadowWyrm || this is Hiryu || this is JukaLord || this is JukaMage || this is OphidianArchmage || this is OphidianKnight || this is SerpentineDragon || this is WhiteWyrm || this is Yamandon || this is Leviathan)
                 {
-                    // = 1/33 chance
-                    if (chance == 1 || chance == 41 || chance == 81 || chance == 121 || chance == 161 || chance == 199)
+                    // = 10% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41 || chance == 51 || chance == 61 || chance == 71 || chance == 81 || chance == 91)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssencePrecision(); }
                         else { ingredient = new EssenceDiligence(); }
@@ -4993,8 +4993,8 @@ namespace Server.Mobiles
                 }
                 else if (this is DeepSeaSerpent || this is Drake || this is IceSerpent || this is GiantSerpent || this is JukaWarrior || this is LavaSerpent || this is LesserHiryu || this is Lizardman || this is OphidianWarrior || this is SeaSerpent || this is SilverSerpent || this is Wyvern || this is Kraken || this is StoneHarpy)
                 {
-                    // = 1/66 chance
-                    if (chance == 1 || chance == 81 || chance == 161)
+                    // = 5% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssencePrecision(); }
                         else { ingredient = new EssenceDiligence(); }
@@ -5003,8 +5003,8 @@ namespace Server.Mobiles
                 // = Other types [Essence of Feeling] or [Essence of Singularity] ==================================
                 else if (this.Fame >= 8000)
                 {
-                    // = 1/33 chance
-                    if (chance == 1 || chance == 41 || chance == 81 || chance == 121 || chance == 161 || chance == 199)
+                    // = 10% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41 || chance == 51 || chance == 61 || chance == 71 || chance == 81 || chance == 91)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceFeeling(); }
                         else { ingredient = new EssenceSingularity(); }
@@ -5017,8 +5017,8 @@ namespace Server.Mobiles
                 }
                 else if (this.Fame >= 1000 && this.Fame < 8000)
                 {
-                    // = 1/66 chance
-                    if (chance == 1 || chance == 81 || chance == 161)
+                    // = 5% chance
+                    if (chance == 1 || chance == 11 || chance == 21 || chance == 31 || chance == 41)
                     {
                         if (Utility.RandomBool() == true) { ingredient = new EssenceFeeling(); }
                         else { ingredient = new EssenceSingularity(); }
