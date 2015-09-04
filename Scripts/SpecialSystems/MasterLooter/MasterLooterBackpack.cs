@@ -227,8 +227,8 @@ namespace Daat99MasterLooterSystem
 						{
 
 							totalTokens += reward;
-							AddTokensAmount((ulong)reward);
-							AddGoldAmount((ulong)(reward*2));
+							//AddTokensAmount((ulong)reward);
+							//AddGoldAmount((ulong)(reward*2));
 						}
 
 						corpse.Delete();
@@ -243,12 +243,12 @@ namespace Daat99MasterLooterSystem
 				}
 			}
 
-			if ( totalTokens > 0 )
-			{
-				player.SendMessage(1173, "You gained " + totalTokens + " tokens for cleaning the shard.");
-			}
-			else
-				player.SendMessage(1173, "You didn't gain a single token...");
+			//if ( totalTokens > 0 )
+			//{
+			//	player.SendMessage(1173, "You gained " + totalTokens + " tokens for cleaning the shard.");
+			//}
+			//else
+			//	player.SendMessage(1173, "You didn't gain a single token...");
 			if ( !lootedAll )
 				player.SendMessage(1173, "You can't loot all the items.");
 		}
@@ -625,7 +625,25 @@ namespace Daat99MasterLooterSystem
 			return amount;
 		}
 
-		internal bool withdrawGold(PlayerMobile player, ulong amount, bool intoGoldCheck)
+        public ulong RemoveTokensAmount(ulong amount)
+        {
+            if (!TokenLedger)
+                return amount;
+            ulong max = ulong.MaxValue - TokensAmount;
+            if (max > amount)
+            {
+                Console.WriteLine("RemoveTokensAmount:{0}", amount);
+                TokensAmount -= amount;
+                return (ulong)0;
+            }
+            TokensAmount -= max;
+            Console.WriteLine("Before RemoveTokensAmount:{0}", amount);
+            amount -= max;
+            Console.WriteLine("After RemoveTokensAmount:{0}", amount);
+            return amount;
+        }
+
+        internal bool withdrawGold(PlayerMobile player, ulong amount, bool intoGoldCheck)
 		{
 			if ( !IsOwner(player) )
 				return false;

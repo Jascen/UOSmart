@@ -84,10 +84,19 @@ namespace Server.Spells.Chivalry
 
                 if (this.Caster is PlayerMobile)
                 {
-                    ((PlayerMobile)this.Caster).EnemyOfOneType = null;
-                    ((PlayerMobile)this.Caster).WaitingForEnemy = true;
+                    if (((PlayerMobile)this.Caster).EnemyOfOneType != null)
+                    {
+                        ((PlayerMobile)this.Caster).EnemyOfOneType = null;
+                        ((PlayerMobile)this.Caster).WaitingForEnemy = false;
+                        BuffInfo.RemoveBuff(this.Caster, BuffIcon.EnemyOfOne);
+                    }
+                    else
+                    {
+                        ((PlayerMobile)this.Caster).EnemyOfOneType = null;
+                        ((PlayerMobile)this.Caster).WaitingForEnemy = true;
 
-                    BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.EnemyOfOne, 1075653, 1044111, TimeSpan.FromMinutes(delay), this.Caster));
+                        BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.EnemyOfOne, 1075653, 1044111, TimeSpan.FromMinutes(delay), this.Caster));
+                    }
                 }
             }
 

@@ -12,31 +12,82 @@ ____/_ \____       888                   888    d88P  Y88b d88P  Y88b
 ///daat99's Token System
 ///Made by daat99 based on idea by Viago :)
 ///Thanx for Murzin for all the grammer corrections :)
+using System;
+using System.Collections.Generic;
 using Server.Mobiles;
 using Daat99MasterLooterSystem;
 
 namespace Server.Items
 {
-	public static class TokenSystem
-	{
-		public static bool GiveTokensToPlayer(PlayerMobile player, int amount)
-		{
-			return GiveTokensToPlayer(player, amount, true);
-		}
-		public static bool GiveTokensToPlayer(PlayerMobile player, int amount, bool informPlayer)
-		{
+    public static class TokenSystem
+    {
+        public static bool GiveTokensToPlayer(PlayerMobile player, int amount)
+        {
+            return GiveTokensToPlayer(player, amount, true);
+        }
+        public static bool GiveTokensToPlayer(PlayerMobile player, int amount, bool informPlayer)
+        {
             //return MasterStorageUtils.GiveTypeToPlayer(player, typeof(Daat99Tokens), amount, informPlayer);
             return Daat99MasterLootersUtils.GivePlayerTokens(player, amount, informPlayer);
         }
 
-		//public static bool TakePlayerTokens(PlayerMobile player, int amount)
-		//{
-		//	return TakePlayerTokens(player, amount, true);
-		//}
-		//public static bool TakePlayerTokens(PlayerMobile player, int amount, bool informPlayer)
-		//{
-  //          return MasterStorageUtils.TakeTypeFromPlayer(player, typeof(Daat99Tokens), amount, informPlayer);
-  //      }
+        public static bool TakePlayerTokens(PlayerMobile player, int amount)
+        {
+            return TakePlayerTokens(player, amount, true);
+        }
+        public static bool TakePlayerTokens(PlayerMobile player, int amount, bool informPlayer)
+        {
+            #if USE_TOKENS
+            ulong masterLooterTokens = 0;
+            int curTokens = 0;
+            int amountLeft = amount;
+            int firstPortion = 0;
+            if (amount < 0)
+                return false;
+            
+            // Get Player's total tokens
+            MasterLooterBackpack backpack = Daat99MasterLootersUtils.GetMasterLooter(player);
+            if (backpack != null)
+            {
+                masterLooterTokens = backpack.TokensAmount;
+            }
+            Item[] tokenStacks = player.Backpack.FindItemsByType(typeof(Daat99Tokens));
+            foreach (Item tokenStack in tokenStacks)
+            {
+                curTokens += tokenStack.Amount;
+            }
+
+            // Check Total Tokens >= Item Cost
+            if ((curTokens + int.Parse(masterLooterTokens.ToString()) >= amountLeft))
+            {
+                // Withdraw from backpack first
+                if (amountLeft > curTokens)
+                {
+                    firstPortion = curTokens;
+                }
+                else
+                {
+                    firstPortion = amountLeft;
+                }
+                amountLeft -= player.Backpack.ConsumeUpTo(typeof(Daat99Tokens), firstPortion, false);
+
+                // Withdraw remaining from MasterLooterBackpack
+                if (amountLeft > 0)
+                {
+                    backpack.RemoveTokensAmount(ulong.Parse(amountLeft.ToString()));
+                }
+            return true;
+            }
+            else
+            {
+                player.SendMessage(1173, String.Format("You have {0} tokens in your backpack but require {1}.", curTokens, amount));
+            }
+
+            if (amountLeft == 0)
+                return true;
+            #endif
+            return false;
+        }
     }
 	public class TokenCheck : Item
 	{
