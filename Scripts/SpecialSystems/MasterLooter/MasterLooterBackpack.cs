@@ -227,8 +227,8 @@ namespace Daat99MasterLooterSystem
 						{
 
 							totalTokens += reward;
-							AddTokensAmount((ulong)reward);
-							AddGoldAmount((ulong)(reward*2));
+							//AddTokensAmount((ulong)reward);
+							//AddGoldAmount((ulong)(reward*2));
 						}
 
 						corpse.Delete();
@@ -243,12 +243,12 @@ namespace Daat99MasterLooterSystem
 				}
 			}
 
-			if ( totalTokens > 0 )
-			{
-				player.SendMessage(1173, "You gained " + totalTokens + " tokens for cleaning the shard.");
-			}
-			else
-				player.SendMessage(1173, "You didn't gain a single token...");
+			//if ( totalTokens > 0 )
+			//{
+			//	player.SendMessage(1173, "You gained " + totalTokens + " tokens for cleaning the shard.");
+			//}
+			//else
+			//	player.SendMessage(1173, "You didn't gain a single token...");
 			if ( !lootedAll )
 				player.SendMessage(1173, "You can't loot all the items.");
 		}
