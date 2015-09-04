@@ -625,7 +625,25 @@ namespace Daat99MasterLooterSystem
 			return amount;
 		}
 
-		internal bool withdrawGold(PlayerMobile player, ulong amount, bool intoGoldCheck)
+        public ulong RemoveTokensAmount(ulong amount)
+        {
+            if (!TokenLedger)
+                return amount;
+            ulong max = ulong.MaxValue - TokensAmount;
+            if (max > amount)
+            {
+                Console.WriteLine("RemoveTokensAmount:{0}", amount);
+                TokensAmount -= amount;
+                return (ulong)0;
+            }
+            TokensAmount -= max;
+            Console.WriteLine("Before RemoveTokensAmount:{0}", amount);
+            amount -= max;
+            Console.WriteLine("After RemoveTokensAmount:{0}", amount);
+            return amount;
+        }
+
+        internal bool withdrawGold(PlayerMobile player, ulong amount, bool intoGoldCheck)
 		{
 			if ( !IsOwner(player) )
 				return false;
