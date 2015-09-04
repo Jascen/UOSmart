@@ -1,4 +1,4 @@
-//#define USE_TOKENS
+#define USE_TOKENS
 using System;
 using Server;
 using Server.Items;
