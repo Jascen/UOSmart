@@ -37,52 +37,55 @@ namespace Server.Items
         }
         public static bool TakePlayerTokens(PlayerMobile player, int amount, bool informPlayer)
         {
-
-            //#if USE_TOKENS
-            int curTokens = 0;
+            #if USE_TOKENS
             ulong masterLooterTokens = 0;
+            int curTokens = 0;
             int amountLeft = amount;
+            int firstPortion = 0;
             if (amount < 0)
                 return false;
+            
+            // Get Player's total tokens
             MasterLooterBackpack backpack = Daat99MasterLootersUtils.GetMasterLooter(player);
             if (backpack != null)
             {
                 masterLooterTokens = backpack.TokensAmount;
-                if (backpack.TokensAmount >= (ulong)amountLeft)
-                //if (backpack.TokensAmount - (ulong)amountLeft > 0)
-                {
-                    Console.WriteLine("Before removing from MasterLooterPack:{0}", amountLeft);
-                    amountLeft = (int)backpack.RemoveTokensAmount((ulong)amountLeft);
-                    Console.WriteLine("After removing from MasterLooterPack:{0}", amountLeft);
-                    //return true;
-                }
             }
-
             Item[] tokenStacks = player.Backpack.FindItemsByType(typeof(Daat99Tokens));
-            foreach (var v in tokenStacks)
+            foreach (Item tokenStack in tokenStacks)
             {
-                curTokens += v.Amount;
+                curTokens += tokenStack.Amount;
             }
-            Console.WriteLine("Current Tokens in Bag: {0}", curTokens);
 
-            if (curTokens >= amountLeft)
+            // Check Total Tokens >= Item Cost
+            if ((curTokens + int.Parse(masterLooterTokens.ToString()) >= amountLeft))
             {
-                while (amountLeft > 0)
+                // Withdraw from backpack first
+                if (amountLeft > curTokens)
                 {
-                    int pileAmount = amountLeft > 60000 ? 60000 : amountLeft;
-                    Console.WriteLine("Removing from Backpack:{0}", pileAmount);
-                    amountLeft -= pileAmount;
-                    curTokens -= player.Backpack.ConsumeUpTo(typeof(Daat99Tokens), pileAmount, false);
+                    firstPortion = curTokens;
                 }
+                else
+                {
+                    firstPortion = amountLeft;
+                }
+                amountLeft -= player.Backpack.ConsumeUpTo(typeof(Daat99Tokens), firstPortion, false);
+
+                // Withdraw remaining from MasterLooterBackpack
+                if (amountLeft > 0)
+                {
+                    backpack.RemoveTokensAmount(ulong.Parse(amountLeft.ToString()));
+                }
+            return true;
             }
             else
             {
-                player.SendMessage(1173, String.Format("You have {0} tokens in your backpack but require {1}.", curTokens, amountLeft));
+                player.SendMessage(1173, String.Format("You have {0} tokens in your backpack but require {1}.", curTokens, amount));
             }
 
             if (amountLeft == 0)
                 return true;
-            //#endif
+            #endif
             return false;
         }
     }
