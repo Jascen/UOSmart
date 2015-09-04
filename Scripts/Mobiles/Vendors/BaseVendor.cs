@@ -1042,6 +1042,7 @@ namespace Server.Mobiles
 				if (reward != null)
 				{
 					from.AddToBackpack(reward);
+                    from.AddToBackpack(new CraftingTokens(10));
 				}
 
 				if (gold > 1000)
