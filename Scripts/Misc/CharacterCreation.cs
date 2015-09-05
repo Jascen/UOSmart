@@ -464,8 +464,14 @@ namespace Server.Misc
                 PlaceItemIn(bank, 98, 124, new StarterBagWarriorGargoyle());
                 PlaceItemIn(bank, 70, 124, new StarterBagMageGargoyle());
             }
+            cont = new Daat99MasterLooterSystem.MasterLooterBackpack();
+            cont.Movable = false;
+            PlaceItemIn(m.Backpack, 0, 0, cont);
+            m.PlaceInBackpack(cont);
+            var jar = new HealingFairyJar();
+            jar.Movable = false;
+            PlaceItemIn(m.Backpack, 20, 0, jar);
 
-            
         }
 
         private static void FillBankbox(Mobile m)
