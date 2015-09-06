@@ -104,11 +104,11 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int HitPoints
         {
-            get 
+            get
             {
                 return this.m_HitPoints;
             }
-            set 
+            set
             {
                 if (value != this.m_HitPoints && this.MaxHitPoints > 0)
                 {
@@ -402,7 +402,7 @@ namespace Server.Items
                     return false;
                 }
             }
-		
+
             return base.CanEquip(from);
         }
 
@@ -484,7 +484,7 @@ namespace Server.Items
             Server.Engines.XmlSpawner2.XmlAttach.CheckOnRemoved(this, parent);
         }
 
- #region SF Imbuing
+        #region SF Imbuing
         // ==== Imbued Jewelery takes damage OnHit ====
         public virtual int OnHit(BaseJewel jewel, int damageTaken)
         {
@@ -539,17 +539,17 @@ namespace Server.Items
             base.GetProperties(list);
 
             #region SF Imbuing
-            if (this.m_TimesImbued > 0)
+            if (m_TimesImbued > 0)
                 list.Add(1080418); // (Imbued)
 
-		 if (m_AosAttributes.Brittle > 0)
+            if (m_AosAttributes.Brittle > 0)
                 list.Add(1116209); // Brittle
 
             if (m_AosAttributes.NoRepairs > 0)
                 list.Add("Cannot Be Repaired");
             #endregion
 
-            #region Mondain's Legacy - SF Imbuing
+            #region Mondain's Legacy
             if (this.m_Quality == ArmorQuality.Exceptional)
                 list.Add(1063341); // exceptional
 
@@ -569,9 +569,6 @@ namespace Server.Items
                 }
             }
             #endregion
-
-	  
-
 
             this.m_AosSkillBonuses.GetProperties(list);
 
@@ -852,6 +849,10 @@ namespace Server.Items
             if (context != null && context.DoNotColor)
                 this.Hue = 0;
 
+            //daat99 OWLTR start - runic jewels
+            if (Core.AOS && tool is BaseRunicTool)
+                ((BaseRunicTool)tool).ApplyAttributesTo(this);
+            //daat99 OWLTR end - runic jewels
             if (1 < craftItem.Resources.Count)
             {
                 resourceType = craftItem.Resources.GetAt(1).ItemType;
@@ -883,7 +884,7 @@ namespace Server.Items
                 this.m_Crafter = from;
             #endregion
 
-            return 1;
+            return 1; // return quality ?
         }
 
         #endregion
