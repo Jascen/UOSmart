@@ -65,9 +65,9 @@ namespace Server.Mobiles
                 double theirSkill = pm.Skills[SkillName.Blacksmith].Base;
 
                 if (theirSkill >= 70.1)
-                    pm.NextSmithBulkOrder = TimeSpan.FromHours(6.0);
+                    pm.NextSmithBulkOrder = TimeSpan.FromHours(1.0);
                 else if (theirSkill >= 50.1)
-                    pm.NextSmithBulkOrder = TimeSpan.FromHours(2.0);
+                    pm.NextSmithBulkOrder = TimeSpan.FromHours(1.0);
                 else
                     pm.NextSmithBulkOrder = TimeSpan.FromHours(1.0);
 
