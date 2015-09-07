@@ -5479,8 +5479,8 @@ namespace Server.Mobiles
 								if (info != null && info.Mobile != null)
 								{
 									int index = titles.IndexOf(info.Mobile);
-
-									if (index == -1)
+                                    GiveTokens.CalculateTokens(ds.m_Mobile, this);
+                                    if (index == -1)
 									{
 										titles.Add(info.Mobile);
 										fame.Add(divedFame);
