@@ -84,4 +84,82 @@ namespace Server.Items
                 this.ItemID = 0xF9D;
         }
     }
+    public class SpinedRunicSewingKit : RunicSewingKit
+    {
+        public override CraftSystem CraftSystem { get { return DefTailoring.CraftSystem; } }
+        [Constructable]
+        public SpinedRunicSewingKit()
+            : base(CraftResource.SpinedLeather)
+        {
+            Name = "Spined Runic Sewing Kit";
+            UsesRemaining = 45;
+        }
+        public SpinedRunicSewingKit(Serial serial) : base(serial) { }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+    public class HornedRunicSewingKit : RunicSewingKit
+    {
+        public override CraftSystem CraftSystem { get { return DefTailoring.CraftSystem; } }
+        [Constructable]
+        public HornedRunicSewingKit()
+            : base(CraftResource.HornedLeather)
+        {
+            Name = "Horned Runic Sewing Kit";
+            UsesRemaining = 30;
+        }
+        public HornedRunicSewingKit(Serial serial) : base(serial) { }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+    public class BarbedRunicSewingKit : RunicSewingKit
+    {
+        public override CraftSystem CraftSystem { get { return DefTailoring.CraftSystem; } }
+        [Constructable]
+        public BarbedRunicSewingKit()
+            : base(CraftResource.BarbedLeather)
+        {
+            Name = "Barbed Runic Sewing Kit";
+            UsesRemaining = 15;
+        }
+        public BarbedRunicSewingKit(Serial serial) : base(serial) { }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
 }
