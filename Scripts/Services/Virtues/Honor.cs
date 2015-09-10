@@ -178,7 +178,10 @@ namespace Server
                     EmbraceHonor(pm);
                 }
                 else if (targeted is Mobile)
+                {
                     Honor(pm, (Mobile)targeted);
+                    pm.Say("I Honor Thee");
+                }
             }
 
             protected override void OnTargetOutOfRange(Mobile from, object targeted)
