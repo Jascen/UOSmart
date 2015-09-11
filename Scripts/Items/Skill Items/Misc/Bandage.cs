@@ -570,8 +570,11 @@ namespace Server.Items
 				{
 					if (Core.AOS)
 					{
-						seconds = 5.0 + (0.5 * ((double)(120 - dex) / 10)); // TODO: Verify algorithm
-					}
+						//seconds = 5.0 + (0.5 * ((double)(120 - dex) / 10)); // TODO: Verify algorithm // Old
+                        seconds = 5.0 + (0.5 * ((double)(90 - dex) / 10)); // New
+                        if (seconds < 2.0)
+                            seconds = 2.0;
+                    }
 					else
 					{
 						seconds = 9.4 + (0.6 * ((double)(120 - dex) / 10));
