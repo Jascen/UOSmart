@@ -3488,7 +3488,7 @@ namespace Server.Multis
             if (list == null)
                 return false;
 
-            for (int i = 0; i < list.Count; ++i)
+            for (int i = 2; i < list.Count; ++i)
             {
                 BaseHouse h = list[i];
 
