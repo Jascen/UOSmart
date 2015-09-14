@@ -152,7 +152,7 @@ namespace Server
                 source.SentHonorContext.Cancel();
 
             new HonorContext(source, target);
-
+            source.Say("I Honor Thee");
             source.Direction = source.GetDirectionTo(target);
 
             if (!source.Mounted)
@@ -179,8 +179,7 @@ namespace Server
                 }
                 else if (targeted is Mobile)
                 {
-                    Honor(pm, (Mobile)targeted);
-                    pm.Say("I Honor Thee");
+                    Honor(pm, (Mobile)targeted);                    
                 }
             }
 
