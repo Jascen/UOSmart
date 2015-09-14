@@ -37,9 +37,9 @@ namespace Server.Gumps
             int LMCCap = 40;
             double BandageSpeedCap = 2.0;
             int SwingSpeedCap = 100;
-            int HCICap = 75;
-            int DCICap = 75;
-            int FCCap = 6;
+            int HCICap = 45;
+            int DCICap = 45;
+            int FCCap = 4;
             int FCRCap = 8;
             int DamageIncreaseCap = 100;
             int SDICap = 100;

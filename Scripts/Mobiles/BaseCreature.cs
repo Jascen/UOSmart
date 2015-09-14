@@ -5469,7 +5469,8 @@ namespace Server.Mobiles
 
 						if (party != null)
 						{
-							int divedFame = totalFame / party.Members.Count;
+                            GiveTokens.CalculateTokens(ds.m_Mobile, this);
+                            int divedFame = totalFame / party.Members.Count;
 							int divedKarma = totalKarma / party.Members.Count;
 
 							for (int j = 0; j < party.Members.Count; ++j)
@@ -5478,8 +5479,7 @@ namespace Server.Mobiles
 
 								if (info != null && info.Mobile != null)
 								{
-									int index = titles.IndexOf(info.Mobile);
-                                    GiveTokens.CalculateTokens(ds.m_Mobile, this);
+									int index = titles.IndexOf(info.Mobile);                                    
                                     if (index == -1)
 									{
 										titles.Add(info.Mobile);

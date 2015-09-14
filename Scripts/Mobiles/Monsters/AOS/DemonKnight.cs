@@ -241,7 +241,8 @@ namespace Server.Mobiles
 
         public static bool CheckArtifactChance(Mobile boss)
         {
-            return GetArtifactChance(boss) > Utility.Random(100000);
+            //return GetArtifactChance(boss) > Utility.Random(100000); // Was 1.74% chance per DF and 0.87% per other boss
+            return GetArtifactChance(boss) > Utility.Random(21000); // Now 8.29% with luck, 7.14% without luck for DF && halved for OTHER.
         }
 
         public override WeaponAbility GetWeaponAbility()
