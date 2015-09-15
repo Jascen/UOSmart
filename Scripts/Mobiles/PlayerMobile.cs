@@ -807,7 +807,7 @@ namespace Server.Mobiles
 
 			if (type != ResistanceType.Physical && 60 < max && CurseSpell.UnderEffect(this))
 			{
-				max = 60;
+				max = 70;
 			}
 
 			if (Core.ML && Race == Race.Elf && type == ResistanceType.Energy)
