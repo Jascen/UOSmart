@@ -140,7 +140,7 @@ namespace Server.Engines.Craft
                 {
                     break;
                 }
-            }
+            }            
 
             eable.Free();
 
@@ -171,6 +171,19 @@ namespace Server.Engines.Craft
                         anvil = anvil || isAnvil;
                         forge = forge || isForge;
                     }
+                }
+            }
+
+            if (!anvil || !forge)
+            {
+                foreach (Item curItem in from.Backpack.Items)
+                {
+                    Anvil backpackAnvil = curItem as Anvil;
+                    if (backpackAnvil != null)
+                        anvil = true;
+                    Forge backpackForge = curItem as Forge;
+                    if (backpackForge != null)
+                        forge = true;
                 }
             }
         }
