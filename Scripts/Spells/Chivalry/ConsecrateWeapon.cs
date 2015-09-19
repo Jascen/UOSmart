@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Spells.Chivalry
 {
@@ -75,7 +76,7 @@ namespace Server.Spells.Chivalry
                 */
                 int itemID, soundID;
 
-                switch ( weapon.Skill )
+                switch (weapon.Skill)
                 {
                     case SkillName.Macing:
                         itemID = 0xFB4;
@@ -119,6 +120,7 @@ namespace Server.Spells.Chivalry
                 m_Table[weapon] = t = new ExpireTimer(weapon, duration);
 
                 t.Start();
+                BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.ConsecrateWeapon, 1060495, 1044111, TimeSpan.FromSeconds(seconds), this.Caster));
             }
 
             this.FinishSequence();
@@ -127,6 +129,7 @@ namespace Server.Spells.Chivalry
         private class ExpireTimer : Timer
         {
             private readonly BaseWeapon m_Weapon;
+            private readonly PlayerMobile m_Caster;
             public ExpireTimer(BaseWeapon weapon, TimeSpan delay)
                 : base(delay)
             {
@@ -139,6 +142,7 @@ namespace Server.Spells.Chivalry
                 this.m_Weapon.Consecrated = false;
                 Effects.PlaySound(this.m_Weapon.GetWorldLocation(), this.m_Weapon.Map, 0x1F8);
                 m_Table.Remove(this);
+                BuffInfo.RemoveBuff(this.m_Caster, BuffIcon.ConsecrateWeapon);
             }
         }
     }
