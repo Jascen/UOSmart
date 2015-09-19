@@ -100,7 +100,7 @@ namespace Server.Spells.Bushido
                 this.Caster.SendLocalizedMessage(1063118); // You prepare to respond immediately to the next blocked blow.
 
                 this.OnCastSuccessful(this.Caster);
-
+                BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.CounterAttack, 1060598, 1044112, false));
                 StartCountering(this.Caster);
             }
 
@@ -120,6 +120,7 @@ namespace Server.Spells.Bushido
             protected override void OnTick()
             {
                 StopCountering(this.m_Mobile);
+                BuffInfo.RemoveBuff(m_Mobile, BuffIcon.CounterAttack);
                 this.m_Mobile.SendLocalizedMessage(1063119); // You return to your normal stance.
             }
         }

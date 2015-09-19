@@ -93,12 +93,18 @@ namespace Server.Spells.Necromancy
 			
             m.PlaySound(0x17F);
             m.FixedParticles(0x374A, 1, 15, 9902, 1108, 4, EffectLayer.Waist);
+            BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.WraithForm, 1060524, 1044109, false));
         }
-
         public override void RemoveEffect(Mobile m)
         {
-            if (m is PlayerMobile && m.IsPlayer())
-                ((PlayerMobile)m).IgnoreMobiles = false;
+            if (m is PlayerMobile)
+            {
+                BuffInfo.RemoveBuff(m, BuffIcon.WraithForm);
+                if (m.IsPlayer()) // Put into it's own If so it doesn't affect Staff's IgnoreMobiles
+                {
+                    ((PlayerMobile)m).IgnoreMobiles = false;
+                }
+            }
         }
     }
 }

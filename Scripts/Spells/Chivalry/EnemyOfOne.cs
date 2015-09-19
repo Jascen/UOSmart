@@ -62,40 +62,41 @@ namespace Server.Spells.Chivalry
         {
             if (this.CheckSequence())
             {
-                this.Caster.PlaySound(0x0F5);
-                this.Caster.PlaySound(0x1ED);
-                this.Caster.FixedParticles(0x375A, 1, 30, 9966, 33, 2, EffectLayer.Head);
-                this.Caster.FixedParticles(0x37B9, 1, 30, 9502, 43, 3, EffectLayer.Head);
-
                 Timer t = (Timer)m_Table[this.Caster];
 
                 if (t != null)
                     t.Stop();
-
-                double delay = (double)this.ComputePowerValue(1) / 60;
-
-                // TODO: Should caps be applied?
-                if (delay < 1.5)
-                    delay = 1.5;
-                else if (delay > 3.5)
-                    delay = 3.5;
-
-                m_Table[this.Caster] = Timer.DelayCall(TimeSpan.FromMinutes(delay), new TimerStateCallback(Expire_Callback), this.Caster);
-
-                if (this.Caster is PlayerMobile)
+                if (((PlayerMobile)this.Caster).EnemyOfOneType != null)
+                {                    
+                    ((PlayerMobile)this.Caster).EnemyOfOneType = null;
+                    ((PlayerMobile)this.Caster).WaitingForEnemy = false;
+                    BuffInfo.RemoveBuff(this.Caster, BuffIcon.EnemyOfOne);
+                    this.Caster.PlaySound(0x1F8);
+                    Console.WriteLine("Removing EOO");
+                }
+                else
                 {
-                    if (((PlayerMobile)this.Caster).EnemyOfOneType != null)
-                    {
-                        ((PlayerMobile)this.Caster).EnemyOfOneType = null;
-                        ((PlayerMobile)this.Caster).WaitingForEnemy = false;
-                        BuffInfo.RemoveBuff(this.Caster, BuffIcon.EnemyOfOne);
-                    }
-                    else
+                    this.Caster.PlaySound(0x0F5);
+                    this.Caster.PlaySound(0x1ED);
+                    this.Caster.FixedParticles(0x375A, 1, 30, 9966, 33, 2, EffectLayer.Head);
+                    this.Caster.FixedParticles(0x37B9, 1, 30, 9502, 43, 3, EffectLayer.Head);
+
+                    double delay = (double)this.ComputePowerValue(1) / 60;
+
+                    // TODO: Should caps be applied?
+                    if (delay < 1.5)
+                        delay = 1.5;
+                    else if (delay > 3.5)
+                        delay = 3.5;
+
+                    m_Table[this.Caster] = Timer.DelayCall(TimeSpan.FromMinutes(delay), new TimerStateCallback(Expire_Callback), this.Caster);
+
+                    if (this.Caster is PlayerMobile)
                     {
                         ((PlayerMobile)this.Caster).EnemyOfOneType = null;
                         ((PlayerMobile)this.Caster).WaitingForEnemy = true;
-
                         BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.EnemyOfOne, 1075653, 1044111, TimeSpan.FromMinutes(delay), this.Caster));
+                        Console.WriteLine("Adding EOO");
                     }
                 }
             }

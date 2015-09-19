@@ -112,7 +112,7 @@ namespace Server.Spells.Bushido
 
                 this.Caster.FixedParticles(0x375A, 1, 17, 0x7DA, 0x960, 0x3, EffectLayer.Waist);
                 this.Caster.PlaySound(0x51A);
-
+                BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.Confidence, 1060596, 1044112, false));
                 this.OnCastSuccessful(this.Caster);
 
                 BeginConfidence(this.Caster);
@@ -135,6 +135,7 @@ namespace Server.Spells.Bushido
             protected override void OnTick()
             {
                 EndConfidence(this.m_Mobile);
+                BuffInfo.RemoveBuff(m_Mobile, BuffIcon.Confidence);
                 this.m_Mobile.SendLocalizedMessage(1063116); // Your confidence wanes.
             }
         }
