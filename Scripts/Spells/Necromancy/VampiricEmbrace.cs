@@ -76,7 +76,13 @@ namespace Server.Spells.Necromancy
         {
             Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x373A, 1, 17, 1108, 7, 9914, 0);
             Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x376A, 1, 22, 67, 7, 9502, 0);
+            BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.VampiricEmbrace, 1060521, 1044109, false));
             Effects.PlaySound(m.Location, m.Map, 0x4B1);
+        }
+
+        public override void RemoveEffect(Mobile m)
+        {
+            BuffInfo.RemoveBuff(m, BuffIcon.VampiricEmbrace);
         }
     }
 }
