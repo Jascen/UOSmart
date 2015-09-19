@@ -216,7 +216,7 @@ namespace Server.Spells.Bushido
                 this.Caster.SendLocalizedMessage(1063120); // You feel that you might be able to deflect any attack!
                 this.Caster.FixedParticles(0x376A, 1, 20, 0x7F5, 0x960, 3, EffectLayer.Waist);
                 this.Caster.PlaySound(0x51B);
-
+                BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.Evasion, 1060597, 1044112, false));
                 this.OnCastSuccessful(this.Caster);
 
                 BeginEvasion(this.Caster);
@@ -241,6 +241,7 @@ namespace Server.Spells.Bushido
             protected override void OnTick()
             {
                 EndEvasion(this.m_Mobile);
+                BuffInfo.RemoveBuff(m_Mobile, BuffIcon.Evasion);
                 this.m_Mobile.SendLocalizedMessage(1063121); // You no longer feel that you could deflect any attack.
             }
         }
