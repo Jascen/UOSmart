@@ -401,7 +401,14 @@ namespace Server.Items
 						healerNumber = (m_Healer == m_Patient) ? -1 : 1010058; // You have cured the target of all poisons.
 						patientNumber = 1010059; // You have been cured of all poisons.
 					}
-					else
+                    else if (MortalStrike.IsWounded(m_Patient))
+                    {
+                        healerNumber = (m_Healer == m_Patient ? 1005000 : 1010398);
+                        patientNumber = -1;
+                        playSound = false;
+                        MortalStrike.EndWound(m_Patient);
+                    }
+                    else
 					{
 						healerNumber = -1;
 						patientNumber = -1;
@@ -419,12 +426,6 @@ namespace Server.Items
 				patientNumber = 1060167; // The bleeding wounds have healed, you are no longer bleeding!
 
 				BleedAttack.EndBleed(m_Patient, false);
-			}
-			else if (MortalStrike.IsWounded(m_Patient))
-			{
-				healerNumber = (m_Healer == m_Patient ? 1005000 : 1010398);
-				patientNumber = -1;
-				playSound = false;
 			}
 			else if (m_Patient.Hits == m_Patient.HitsMax)
 			{
