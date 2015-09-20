@@ -102,18 +102,29 @@ namespace Server.Items
 					attacker.DisruptiveAction();
 					attacker.Send(new Swing(0, attacker, defender));
 
-					if (OnFired(attacker, defender))
-					{
-						if (CheckHit(attacker, defender))
-						{
-							OnHit(attacker, defender);
-						}
-						else
-						{
-							OnMiss(attacker, defender);
-						}
-					}
-				}
+                    if (OnFired(attacker, defender))
+                    {
+                        if (CheckHit(attacker, defender))
+                        {
+                            OnHit(attacker, defender);
+                        }
+                        else
+                        {
+                            OnMiss(attacker, defender);
+                        }
+                    }
+                    else // Arrow not consumed
+                    {
+                        if (CheckHit(attacker, defender))
+                        {
+                            OnHit(attacker, defender, 0.75);
+                        }
+                        else
+                        {
+                            OnMiss(attacker, defender);
+                        }
+                    }
+                }
 
 				attacker.RevealingAction();
 
@@ -206,27 +217,27 @@ namespace Server.Items
 		{
 			if (attacker.Player)
 			{
-				BaseQuiver quiver = attacker.FindItemOnLayer(Layer.Cloak) as BaseQuiver;
-				Container pack = attacker.Backpack;
+                BaseQuiver quiver = attacker.FindItemOnLayer(Layer.Cloak) as BaseQuiver;
+                Container pack = attacker.Backpack;
 
-				if (quiver == null || Utility.Random(100) >= quiver.LowerAmmoCost)
-				{
-					// consume ammo
-					if (quiver != null && quiver.ConsumeTotal(AmmoType, 1))
-					{
-						quiver.InvalidateWeight();
-					}
-					else if (pack == null || !pack.ConsumeTotal(AmmoType, 1))
-					{
-						return false;
-					}
-				}
-				else if (quiver.FindItemByType(AmmoType) == null && (pack == null || pack.FindItemByType(AmmoType) == null))
-				{
-					// lower ammo cost should not work when we have no ammo at all
-					return false;
-				}
-			}
+                if (quiver == null || Utility.Random(100) >= quiver.LowerAmmoCost)
+                {
+                    // consume ammo
+                    if (quiver != null && quiver.ConsumeTotal(AmmoType, 1))
+                    {
+                        quiver.InvalidateWeight();
+                    }
+                    else if (pack == null || !pack.ConsumeTotal(AmmoType, 1))
+                    {
+                        return false;
+                    }
+                }
+                else if (quiver.FindItemByType(AmmoType) == null && (pack == null || pack.FindItemByType(AmmoType) == null))
+                {
+                    // lower ammo cost should not work when we have no ammo at all
+                    return false;
+                }
+            }
 
 			attacker.MovingEffect(defender, EffectID, 18, 1, false, false);
 
