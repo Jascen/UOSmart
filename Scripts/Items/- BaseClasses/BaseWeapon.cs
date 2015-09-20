@@ -1921,24 +1921,30 @@ namespace Server.Items
             * Capped at x3 (300%).
             */
 			int percentageBonus = 0;
-
+            
+            // Weapon Ability (0.9 to 1.5 --> -10 to +50)
 			WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
-			SpecialMove move = SpecialMove.GetCurrentMove(attacker);
-
 			if (a != null)
 			{
 				percentageBonus += (int)(a.DamageScalar * 100) - 100;
 			}
 
-			if (move != null)
+            // Special Move (0.5 to 1.0? --> -50 to +0)
+            SpecialMove move = SpecialMove.GetCurrentMove(attacker);
+            if (move != null)
 			{
 				percentageBonus += (int)(move.GetDamageScalar(attacker, defender) * 100) - 100;
 			}
+            if (m_InDoubleStrike)
+            {
+                percentageBonus -= 10;
+            }
 
-			percentageBonus += (int)(damageBonus * 100) - 100;
+            // Input parameter (Usually 1.0 --> +0)
+            percentageBonus += (int)(damageBonus * 100) - 100;
 
+            // Slayers; Weapon and Talisman (+100, what about Supers???)
 			CheckSlayerResult cs = CheckSlayers(attacker, defender);
-
 			if (cs != CheckSlayerResult.None)
 			{
 				if (cs == CheckSlayerResult.Slayer)
@@ -1949,6 +1955,7 @@ namespace Server.Items
 				percentageBonus += 100;
 			}
 
+            // Enemy of One (+100)
 			if (!attacker.Player)
 			{
 				if (defender is PlayerMobile)
@@ -1982,20 +1989,15 @@ namespace Server.Items
 				}
 			}
 
+            // Pack Instinct (25 to 100)
 			int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
-
 			if (packInstinctBonus != 0)
 			{
 				percentageBonus += packInstinctBonus;
 			}
 
-			if (m_InDoubleStrike)
-			{
-				percentageBonus -= 10;
-			}
-
+            // Silver slayer vs Necro Transformations
 			TransformContext context = TransformationSpellHelper.GetContext(defender);
-
 			if ((m_Slayer == SlayerName.Silver || m_Slayer2 == SlayerName.Silver) && context != null &&
 				context.Spell is NecromancerSpell && context.Type != typeof(HorrificBeastSpell))
 			{
@@ -2003,6 +2005,7 @@ namespace Server.Items
 				percentageBonus += 25;
 			}
 
+            // Honor (+0 to +125)
 			if (attacker is PlayerMobile && !(Core.ML && defender is PlayerMobile))
 			{
 				PlayerMobile pmAttacker = (PlayerMobile)attacker;
@@ -2018,7 +2021,8 @@ namespace Server.Items
 				}
 			}
 
-			#region Stygian Abyss
+			// Gargoyle Passive (0 to +[90+47])
+            #region Stygian Abyss
 			percentageBonus += BattleLust.GetBonus(attacker, defender);
 
 			if (this is BaseThrown)
@@ -2032,6 +2036,7 @@ namespace Server.Items
 			}
 			#endregion
 
+            // Talisman (+100?)
 			#region Mondain's Legacy
 			if (Core.ML)
 			{
@@ -2042,6 +2047,7 @@ namespace Server.Items
 					percentageBonus += talisman.Killer.DamageBonus(defender);
 				}
 
+                // Cow slayer weapon
 				if (this is ButchersWarCleaver)
 				{
 					if (defender is Bull || defender is Cow || defender is Gaman)
@@ -2052,6 +2058,7 @@ namespace Server.Items
 			}
 			#endregion
 
+            // END -- If Bonus > 300%, Bonus = 300%.
 			percentageBonus = Math.Min(percentageBonus, 300);
 
 			damage = AOS.Scale(damage, 100 + percentageBonus);
@@ -2244,9 +2251,18 @@ namespace Server.Items
 				}
 
 				if (m_Cursed)
-				{
-					lifeLeech += 50; // Additional 50% life leech for cursed weapons (necro spell)
-				}
+				{                    
+                    lifeLeech += 50; // Additional 50% life leech for cursed weapons (necro spell)
+                    // Need to figure out how to determine if the attacker already has the CurseWeapon buff.
+                    // This will add a new Icon on swing.  But you lose the duration if you already have the buff on.
+                    // This is to cover the case if someone disarms/re-arms a cursed weapon.
+                    // This is a rare case so I'm going to comment it out but leave it here for the future.
+                    // BuffInfo.AddBuff(attacker, new BuffInfo(BuffIcon.CurseWeapon, 1060512, 1044109));
+                }
+                else
+                {
+                    BuffInfo.RemoveBuff(attacker, BuffIcon.CurseWeapon);
+                }
 
 				context = TransformationSpellHelper.GetContext(attacker);
 
@@ -3086,14 +3102,15 @@ namespace Server.Items
 			{
 				lumberBonus = 0.0;
 			}
-			#endregion
+            #endregion
 
-			#region Modifiers
-			/*
+            #region Modifiers
+            /*
             * The following are damage modifiers whose effect shows on the status bar.
-            * Capped at 100% total.
+            * Capped at 100% total. 
             */
-			int damageBonus = AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage);
+            // AOS Damage Increase Property
+            int damageBonus = AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage);
 
 			// Horrific Beast transformation gives a +25% bonus to damage.
 			if (TransformationSpellHelper.UnderTransformation(attacker, typeof(HorrificBeastSpell)))
