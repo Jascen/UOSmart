@@ -13,13 +13,13 @@ namespace Server.Mobiles
             this.Body = 308;
             this.BaseSoundID = 0x48D;
 
-            this.SetStr(1000);
+            this.SetStr(500);
             this.SetDex(151, 175);
             this.SetInt(171, 220);
 
             this.SetHits(3600);
 
-            this.SetDamage(34, 36);
+            this.SetDamage(25, 30);
 
             this.SetDamageType(ResistanceType.Physical, 50);
             this.SetDamageType(ResistanceType.Cold, 50);
