@@ -71,8 +71,8 @@ namespace Server.Spells.Necromancy
 
                 weapon.Cursed = true;
 
-                m_Table[weapon] = t = new ExpireTimer(weapon, duration);
-
+                m_Table[weapon] = t = new ExpireTimer(weapon, duration, this.Caster);
+                BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.CurseWeapon, 1060512, 1044109, duration, this.Caster));
                 t.Start();
             }
 
@@ -82,9 +82,11 @@ namespace Server.Spells.Necromancy
         private class ExpireTimer : Timer
         {
             private readonly BaseWeapon m_Weapon;
-            public ExpireTimer(BaseWeapon weapon, TimeSpan delay)
+            private Mobile m_Caster;
+            public ExpireTimer(BaseWeapon weapon, TimeSpan delay, object state)
                 : base(delay)
             {
+                m_Caster = (Mobile)state;
                 this.m_Weapon = weapon;
                 this.Priority = TimerPriority.OneSecond;
             }
@@ -94,6 +96,7 @@ namespace Server.Spells.Necromancy
                 this.m_Weapon.Cursed = false;
                 Effects.PlaySound(this.m_Weapon.GetWorldLocation(), this.m_Weapon.Map, 0xFA);
                 m_Table.Remove(this);
+                BuffInfo.RemoveBuff(m_Caster, BuffIcon.CurseWeapon);
             }
         }
 
