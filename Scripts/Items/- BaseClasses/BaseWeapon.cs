@@ -2247,7 +2247,7 @@ namespace Server.Items
 				if ((int)(AosWeaponAttributes.GetValue(attacker, AosWeaponAttribute.HitLeechMana) * propertyBonus) >
 					Utility.Random(100))
 				{
-					manaLeech += 40; // HitLeechMana% chance to leech 40% of damage as mana
+					manaLeech += 10; // HitLeechMana% chance to leech 10% of damage as mana
 				}
 
 				if (m_Cursed)
@@ -2273,8 +2273,8 @@ namespace Server.Items
 
 				if (context != null && context.Type == typeof(WraithFormSpell))
 				{
-					wraithLeech = (5 + (int)((15 * attacker.Skills.SpiritSpeak.Value) / 100));
-						// Wraith form gives an additional 5-20% mana leech
+					wraithLeech = (5 + (int)((15 * attacker.Skills.SpiritSpeak.Value) / 180));
+						// Wraith form gives an additional 5-15% mana leech
 
 					// Mana leeched by the Wraith Form spell is actually stolen, not just leeched.
 					defender.Mana -= AOS.Scale(damageGiven, wraithLeech);
@@ -3140,9 +3140,9 @@ namespace Server.Items
 				damageBonus -= discordanceEffect * 2;
 			}
 
-			if (damageBonus > 100)
+			if (damageBonus > 200)
 			{
-				damageBonus = 100;
+				damageBonus = 200;
 			}
 			#endregion
 
