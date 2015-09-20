@@ -72,7 +72,6 @@ namespace Server.Spells.Chivalry
                     ((PlayerMobile)this.Caster).WaitingForEnemy = false;
                     BuffInfo.RemoveBuff(this.Caster, BuffIcon.EnemyOfOne);
                     this.Caster.PlaySound(0x1F8);
-                    Console.WriteLine("Removing EOO");
                 }
                 else
                 {
@@ -96,7 +95,6 @@ namespace Server.Spells.Chivalry
                         ((PlayerMobile)this.Caster).EnemyOfOneType = null;
                         ((PlayerMobile)this.Caster).WaitingForEnemy = true;
                         BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.EnemyOfOne, 1075653, 1044111, TimeSpan.FromMinutes(delay), this.Caster));
-                        Console.WriteLine("Adding EOO");
                     }
                 }
             }

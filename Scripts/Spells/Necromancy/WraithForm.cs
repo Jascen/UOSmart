@@ -62,7 +62,7 @@ namespace Server.Spells.Necromancy
         {
             get
             {
-                return -5;
+                return -25;
             }
         }
         public override int ColdResistOffset
