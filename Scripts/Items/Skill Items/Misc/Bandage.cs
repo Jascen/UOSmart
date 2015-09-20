@@ -222,13 +222,15 @@ namespace Server.Items
 		public void StopHeal()
 		{
 			m_Table.Remove(m_Healer);
-
-			if (m_Timer != null)
+            BuffInfo.RemoveBuff(m_Healer, BuffIcon.Healing);
+            if (m_Patient != m_Healer)
+                BuffInfo.RemoveBuff(m_Patient, BuffIcon.Incognito);
+            if (m_Timer != null)
 			{
-				m_Timer.Stop();
-			}
+				m_Timer.Stop();                
+            }
 
-			m_Timer = null;
+            m_Timer = null;
 		}
 
 		private static readonly Dictionary<Mobile, BandageContext> m_Table = new Dictionary<Mobile, BandageContext>();
@@ -286,7 +288,7 @@ namespace Server.Items
 			else if (!m_Healer.InRange(m_Patient, Bandage.Range))
 			{
 				healerNumber = 500963; // You did not stay close enough to heal your target.
-				patientNumber = -1;
+                patientNumber = -1;
 				playSound = false;
 			}
 			else if (!m_Patient.Alive || (petPatient != null && petPatient.IsDeadPet))
@@ -560,7 +562,7 @@ namespace Server.Items
 			else if (healer.CanBeBeneficial(patient, true, true))
 			{
 				healer.DoBeneficial(patient);
-
+                                
 				bool onSelf = (healer == patient);
 				int dex = healer.Dex;
 
@@ -580,8 +582,8 @@ namespace Server.Items
 					{
 						seconds = 9.4 + (0.6 * ((double)(120 - dex) / 10));
 					}
-				}
-				else
+                }
+                else
 				{
 					if (Core.AOS && GetPrimarySkill(patient) == SkillName.Veterinary)
 					{
@@ -613,9 +615,17 @@ namespace Server.Items
 							seconds = 5.0 + resDelay;
 						}
 					}
-				}
+                }
+                BuffInfo.AddBuff(healer, new BuffInfo(BuffIcon.Healing, 1071289, 1002082, TimeSpan.FromSeconds(seconds), healer));
+                if (healer != patient)
+                    BuffInfo.AddBuff(patient, new BuffInfo(BuffIcon.Incognito, 1071289, 1002082, TimeSpan.FromSeconds(seconds), patient));
+                // Healing = 1002082
+                // BandageSelf = 1076227
+                // * Bandages = 1078821
+                // Bandage Self = 1114306
+                // Bandage Selected Target = 1114307
 
-				BandageContext context = GetContext(healer);
+                BandageContext context = GetContext(healer);
 
 				if (context != null)
 				{
