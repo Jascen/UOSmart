@@ -354,6 +354,7 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(houseAddOns, 1072216, typeof(ContestMiniHouseDeed), Expansion.SE, MiniHouseType.ChurchAtNight),
                     new RewardEntry(miscellaneous, 1076155, typeof(RedSoulstone), Expansion.ML),
                     new RewardEntry(miscellaneous, 1080523, typeof(CommodityDeedBox), Expansion.ML),
+                    new RewardEntry(etherealSteeds, 1006019, typeof(EtherealHorse))
                 }),
                 new RewardList(RewardInterval, 2, new RewardEntry[]
                 {
@@ -366,7 +367,9 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(cloaksAndRobes, 1080368, typeof(RewardDress), Expansion.ML, Golden, 1080368),
                     new RewardEntry(houseAddOns, 1006048, typeof(BannerDeed)),
                     new RewardEntry(houseAddOns, 1006049, typeof(FlamingHeadDeed)),
-                    new RewardEntry(houseAddOns, 1080409, typeof(MinotaurStatueDeed), Expansion.ML)
+                    new RewardEntry(houseAddOns, 1080409, typeof(MinotaurStatueDeed), Expansion.ML),
+                    new RewardEntry(etherealSteeds, 1006050, typeof(EtherealOstard)),
+                    new RewardEntry(etherealSteeds, 1006051, typeof(EtherealLlama)),
                 }),
                 new RewardList(RewardInterval, 3, new RewardEntry[]
                 {
@@ -379,10 +382,10 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(monsterStatues, 1006038, typeof(MonsterStatuette), MonsterStatuetteType.Cow),
                     new RewardEntry(monsterStatues, 1006039, typeof(MonsterStatuette), MonsterStatuetteType.Zombie),
                     new RewardEntry(monsterStatues, 1006040, typeof(MonsterStatuette), MonsterStatuetteType.Llama),
-                    new RewardEntry(etherealSteeds, 1006019, typeof(EtherealHorse)),
-                    new RewardEntry(etherealSteeds, 1006050, typeof(EtherealOstard)),
-                    new RewardEntry(etherealSteeds, 1006051, typeof(EtherealLlama)),
-                    new RewardEntry(houseAddOns, 1080407, typeof(PottedCactusDeed), Expansion.ML)
+                    new RewardEntry(houseAddOns, 1080407, typeof(PottedCactusDeed), Expansion.ML),
+                    new RewardEntry(etherealSteeds, 1049746, typeof(EtherealKirin)),
+                    new RewardEntry(etherealSteeds, 1049745, typeof(EtherealUnicorn)),
+                    new RewardEntry(etherealSteeds, 1049747, typeof(EtherealRidgeback)),
                 }),
                 new RewardList(RewardInterval, 4, new RewardEntry[]
                 {
@@ -399,9 +402,6 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(monsterStatues, 1049742, typeof(MonsterStatuette), MonsterStatuetteType.Ophidian),
                     new RewardEntry(monsterStatues, 1049743, typeof(MonsterStatuette), MonsterStatuetteType.Reaper),
                     new RewardEntry(monsterStatues, 1049744, typeof(MonsterStatuette), MonsterStatuetteType.Mongbat),
-                    new RewardEntry(etherealSteeds, 1049746, typeof(EtherealKirin)),
-                    new RewardEntry(etherealSteeds, 1049745, typeof(EtherealUnicorn)),
-                    new RewardEntry(etherealSteeds, 1049747, typeof(EtherealRidgeback)),
                     new RewardEntry(houseAddOns, 1049737, typeof(DecorativeShieldDeed)),
                     new RewardEntry(houseAddOns, 1049738, typeof(HangingSkeletonDeed))
                 }),
