@@ -1,6 +1,6 @@
+# [UOSmart]
+UOSmart is the first rendition of fixing/modifying/adding code to learn industry tools and C# technologies as well as make the game more enjoyable.  It was a rather short-lived side project due to lack of interest in the game from co-developers.
+
+### Original Source
 ServUO - http://www.servuo.com
-
-Advanced Ultima Online server emulation software.
-
-Visit our website for more information and to meet the community behind this great project!
-
+GitHub - https://github.com/ServUO/ServUO
